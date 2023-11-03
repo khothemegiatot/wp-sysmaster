@@ -1,0 +1,65 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Custom Codes\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-11-02 14:45+0000\n"
+"PO-Revision-Date: 2023-11-02 15:46+0000\n"
+"Last-Translator: \n"
+"Language-Team: Vietnamese\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.6; wp-6.3.2\n"
+"X-Domain: wp-custom-codes"
+
+#. Description of the plugin
+msgid "A plugin containing code snippets used for system customization."
+msgstr "Tiện ích mở rộng chứa mã tùy chỉnh cho WordPress"
+
+#. Author URI of the plugin
+msgid "https://www.phanxuanchanh.com"
+msgstr "https://www.phanxuanchanh.com"
+
+#. Author of the plugin
+msgid "Phan Xuan Chanh"
+msgstr "Phan Xuân Chánh"
+
+msgid "quality_rating_taxonomy__add_new_item"
+msgstr "Thêm Xếp loại Chất lượng Mới"
+
+msgid "quality_rating_taxonomy__all_items"
+msgstr "Tất cả Xếp loại Chất lượng"
+
+msgid "quality_rating_taxonomy__edit_item"
+msgstr "Chỉnh sửa Xếp loại Chất lượng"
+
+msgid "quality_rating_taxonomy__menu_name"
+msgstr "Xếp loại Chất lượng"
+
+msgid "quality_rating_taxonomy__name"
+msgstr "Xếp loại Chất lượng"
+
+msgid "quality_rating_taxonomy__new_item_name"
+msgstr "Tên Xếp loại Chất lượng Mới"
+
+msgid "quality_rating_taxonomy__parent_item"
+msgstr "Xếp loại Chất lượng Cha"
+
+msgid "quality_rating_taxonomy__parent_item_colon"
+msgstr "Xếp loại Chất lượng Cha:"
+
+msgid "quality_rating_taxonomy__search_items"
+msgstr "Tìm kiếm Xếp loại Chất lượng"
+
+msgid "quality_rating_taxonomy__singular_name"
+msgstr "Xếp loại Chất lượng"
+
+msgid "quality_rating_taxonomy__update_item"
+msgstr "Cập nhật Xếp loại Chất lượng"
+
+#. Name of the plugin
+msgid "WP Custom Codes"
+msgstr "WP Custom Codes"

@@ -1,0 +1,66 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Custom Codes\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-11-02 15:45+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.6; wp-6.3.2\n"
+"X-Domain: wp-custom-codes"
+
+#. Description of the plugin
+msgid "A plugin containing code snippets used for system customization."
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.phanxuanchanh.com"
+msgstr ""
+
+#. Author of the plugin
+msgid "Phan Xuan Chanh"
+msgstr ""
+
+#. Name of the plugin
+msgid "WP Custom Codes"
+msgstr ""
+
+msgid "quality_rating_taxonomy__name"
+msgstr ""
+
+msgid "quality_rating_taxonomy__singular_name"
+msgstr ""
+
+msgid "quality_rating_taxonomy__menu_name"
+msgstr ""
+
+msgid "quality_rating_taxonomy__new_item_name"
+msgstr ""
+
+msgid "quality_rating_taxonomy__all_items"
+msgstr ""
+
+msgid "quality_rating_taxonomy__parent_item"
+msgstr ""
+
+msgid "quality_rating_taxonomy__parent_item_colon"
+msgstr ""
+
+msgid "quality_rating_taxonomy__edit_item"
+msgstr ""
+
+msgid "quality_rating_taxonomy__update_item"
+msgstr ""
+
+msgid "quality_rating_taxonomy__add_new_item"
+msgstr ""
+
+msgid "quality_rating_taxonomy__search_items"
+msgstr ""
