@@ -1,0 +1,11 @@
+.bmc-btn-container {
+	text-align: center;
+	margin-top: 35px;
+    margin-bottom:15px;
+}
+
+.tategaki {
+	writing-mode: vertical-rl;
+	line-height: 50px !important;
+	margin: 0 auto !important;
+}
