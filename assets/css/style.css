@@ -9,3 +9,16 @@
 	line-height: 50px !important;
 	margin: 0 auto !important;
 }
+
+.tategaki ruby {
+    letter-spacing: 12px;
+}
+
+.tategaki ruby rt {
+    letter-spacing: 0px !important;
+    /*writing-mode: horizontal-tb;*/
+}
+
+ruby rt:hover {
+	font-size: 25px;
+}
