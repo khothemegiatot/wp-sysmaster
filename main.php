@@ -115,7 +115,7 @@ add_filter( 'upgrader_package_options', 'wp_custom_codes__disable_new_plugin_and
  * Add quality rating taxonomy
  */
 
-if( defined( 'ENABLE__add_quality_rating_taxonomy' ) && ENABLE__quality_rating_taxonomy === true ) {
+if( defined( 'ENABLE__add_quality_rating_taxonomy' ) && ENABLE__add_quality_rating_taxonomy === true ) {
     function wp_custom_codes__add_quality_rating_taxonomy() {
         $labels = array(
             'name' => __( 'quality_rating_taxonomy__name', 'wp-custom-codes' ),
