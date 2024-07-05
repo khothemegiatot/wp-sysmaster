@@ -115,7 +115,7 @@ add_filter( 'upgrader_package_options', 'wp_custom_codes__disable_new_plugin_and
  * Add quality rating taxonomy
  */
 
-if( defined( 'ENABLE__quality_rating_taxonomy' ) && ENABLE__quality_rating_taxonomy === true ) {
+if( defined( 'ENABLE__add_quality_rating_taxonomy' ) && ENABLE__quality_rating_taxonomy === true ) {
     function wp_custom_codes__add_quality_rating_taxonomy() {
         $labels = array(
             'name' => __( 'quality_rating_taxonomy__name', 'wp-custom-codes' ),
@@ -188,7 +188,7 @@ if( defined( 'ENABLE__quality_rating_taxonomy' ) && ENABLE__quality_rating_taxon
  * Add buy me coffee
  */
 
-if( defined( ENABLE__add_buy_me_coffee_to_post ) && ENABLE__add_buy_me_coffee_to_post === true ) {
+if( defined( 'ENABLE__add_buy_me_coffee_to_post' ) && ENABLE__add_buy_me_coffee_to_post === true ) {
     function wp_custom_codes__add_buy_me_coffee_to_post($content) {
         // Thay đổi nội dung ở đây
         $custom_content = '<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="' . BUY_ME_COFFEE_ID . '" data-color="#FFDD00" data-emoji="" data-font="Arial" data-text="Tặng tôi một ly cà phê" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>';
