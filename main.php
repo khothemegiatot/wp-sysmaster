@@ -14,7 +14,7 @@
 
 if ( !defined( 'ABSPATH' ) ) exit;
 
-require 'config.php'
+require 'config.php';
 
 
 /**
