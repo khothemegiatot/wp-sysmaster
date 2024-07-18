@@ -28,6 +28,6 @@ ruby rt:hover {
 	src: url('./../fonts/UniHentaiKana/UniHentaiKana-Regular.woff') format('woff');
 }
 
-.is-hentaigana {
+.has-hentaigana {
 	font-family: serif, HentaiKana;
 }
