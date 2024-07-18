@@ -9,6 +9,6 @@
 	src: url('./../fonts/UniHentaiKana/UniHentaiKana-Regular.woff') format('woff');
 }
 
-.is-hetaigana {
+.is-hentaigana {
 	font-family: serif, HentaiKana;
 }
