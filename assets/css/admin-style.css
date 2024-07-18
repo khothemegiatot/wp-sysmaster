@@ -5,10 +5,10 @@
 }
 
 @font-face {
-	font-family:HentaiKana ;
-	src: url('./../fonts/UniHentaiKana/UniHentaiKana-Regular.woff') format('woff') ;
+	font-family: HentaiKana;
+	src: url('./../fonts/UniHentaiKana/UniHentaiKana-Regular.woff') format('woff');
 }
 
 .is-hetaigana {
-	font-family: serif,HentaiKana;
+	font-family: serif, HentaiKana;
 }
