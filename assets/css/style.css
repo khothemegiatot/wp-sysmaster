@@ -22,3 +22,12 @@
 ruby rt:hover {
 	font-size: 25px;
 }
+
+@font-face {
+	font-family:HentaiKana ;
+	src: url('./../fonts/UniHentaiKana/UniHentaiKana-Regular.woff') format('woff') ;
+}
+
+.is-hetaigana {
+	font-family: serif,HentaiKana;
+}

@@ -3,3 +3,12 @@
 	line-height: 50px !important;
 	margin: 0 auto !important;
 }
+
+@font-face {
+	font-family:HentaiKana ;
+	src: url('./../fonts/UniHentaiKana/UniHentaiKana-Regular.woff') format('woff') ;
+}
+
+.is-hetaigana {
+	font-family: serif,HentaiKana;
+}
