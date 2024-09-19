@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Custom Codes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-02 15:45+0000\n"
+"POT-Creation-Date: 2024-09-19 07:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -63,4 +63,37 @@ msgid "quality_rating_taxonomy__add_new_item"
 msgstr ""
 
 msgid "quality_rating_taxonomy__search_items"
+msgstr ""
+
+msgid "web-admin-ui__page-title"
+msgstr ""
+
+msgid "web-admin-ui__menu-title"
+msgstr ""
+
+msgid "web-admin-ui__tab-1_title"
+msgstr ""
+
+msgid "web-admin-ui__tab-2_title"
+msgstr ""
+
+msgid "web-admin-ui__tab-3_title"
+msgstr ""
+
+msgid "web-admin-ui__tab-4_title"
+msgstr ""
+
+msgid "wpcc__og1__o1-enable-rename-uploaded-file"
+msgstr ""
+
+msgid "wpcc__og1__o2-enable-custom-upload-mimes"
+msgstr ""
+
+msgid "wpcc__og3__o1-enable-smtp"
+msgstr ""
+
+msgid "wpcc__og2__o1-disable_plugin_theme_installation"
+msgstr ""
+
+msgid "wpcc__og4__o1-add-quality-rating-taxonomy"
 msgstr ""

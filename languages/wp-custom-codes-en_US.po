@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: WP Custom Codes\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-02 14:45+0000\n"
-"PO-Revision-Date: 2023-11-02 15:46+0000\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2024-09-19 07:56+0000\n"
+"Last-Translator: admin\n"
 "Language-Team: English (United States)\n"
 "Language: en_US\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.6; wp-6.3.2\n"
+"X-Loco-Version: 2.6.11; wp-6.6.2\n"
 "X-Domain: wp-custom-codes"
 
 #. Description of the plugin
@@ -60,6 +60,39 @@ msgstr "Quality Rating"
 msgid "quality_rating_taxonomy__update_item"
 msgstr "Update Quality Rating"
 
+msgid "web-admin-ui__menu-title"
+msgstr "WP Custom Codes"
+
+msgid "web-admin-ui__page-title"
+msgstr "WP Custom Code by Chanh Xuan Phan"
+
+msgid "web-admin-ui__tab-1_title"
+msgstr "Upload"
+
+msgid "web-admin-ui__tab-2_title"
+msgstr "Plugins & Themes"
+
+msgid "web-admin-ui__tab-3_title"
+msgstr "SMTP"
+
+msgid "web-admin-ui__tab-4_title"
+msgstr "Quality rating taxonomy"
+
 #. Name of the plugin
 msgid "WP Custom Codes"
 msgstr "WP Custom Codes"
+
+msgid "wpcc__og1__o1-enable-rename-uploaded-file"
+msgstr "Enable rename uploaded file"
+
+msgid "wpcc__og1__o2-enable-custom-upload-mimes"
+msgstr "Enable custom upload mimes"
+
+msgid "wpcc__og2__o1-disable_plugin_theme_installation"
+msgstr "Disable plugin and theme installation"
+
+msgid "wpcc__og3__o1-enable-smtp"
+msgstr "Enable SMTP"
+
+msgid "wpcc__og4__o1-add-quality-rating-taxonomy"
+msgstr "Add quality rating taxonomy"
