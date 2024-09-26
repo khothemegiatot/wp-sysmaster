@@ -5,7 +5,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Add quality rating taxonomy
  */
-if(  get_option( 'wpcc__og4__o1_add_quality_rating_taxonomy' ) == 'on' ) {
+if(  get_option( $option_names[ 'option_groups_4' ][2][ 'add_quality_rating_taxonomy' ][0] ) == 'on' ) {
     function wp_custom_codes__add_quality_rating_taxonomy() {
         $labels = array(
             'name' => __( 'quality_rating_taxonomy__name', 'wp-custom-codes' ),

@@ -3,7 +3,7 @@
 /**
  * Plugin Name: WP Custom Codes
  * Description: A plugin containing code snippets used for system customization.
- * Version: 2.0
+ * Version: 2.1
  * Author: Chanh Phan Xuan
  * Author URI: https://www.phanxuanchanh.com/
  * Network: true
@@ -16,16 +16,15 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 require 'config.php';
 
-
 /**
- * Load textdomain
+ * Load textdomain and plugin variables
  */
-function wp_custom_codes__load_textdomain() {
+function wp_custom_codes__load_textdomain_plugin_variables() {
     load_plugin_textdomain( 'wp-custom-codes', false, dirname( plugin_basename(__FILE__) ) . '/languages/' );
+    require 'plugin-variables.php';
 }
 
-add_action( 'plugins_loaded', 'wp_custom_codes__load_textdomain' );
-
+add_action( 'plugins_loaded', 'wp_custom_codes__load_textdomain_plugin_variables' );
 
 /**
  * Enqueue styles
@@ -50,8 +49,12 @@ function wp_custom_codes__admin_enqueue_styles() {
 add_action( 'admin_enqueue_scripts', 'wp_custom_codes__admin_enqueue_styles' );
 
 /**
- * 
+ * Load UI and core
  */
+
+if( is_multisite() )
+    require 'network-admin-ui.php';
+
 require 'web-admin-ui.php';
 require 'core/upload.php';
 require 'core/smtp.php';

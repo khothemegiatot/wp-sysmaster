@@ -18,6 +18,10 @@ function wp_custom_codes__disable_new_plugin_and_theme_installation( $options )
     return $options;
 }
 
-if ( get_option( 'wpcc__og2__o1_disable_plugin_theme_installation' ) == 'on' ) {
-    add_filter( 'upgrader_package_options', 'wp_custom_codes__disable_new_plugin_and_theme_installation' );
+if ( is_multisite() ) {
+    if ( get_site_option( $option_names[ 'disable_plugin_theme_installation' ][0] ) == 'on' )
+        add_filter( 'upgrader_package_options', 'wp_custom_codes__disable_new_plugin_and_theme_installation' );
+} else {
+    if ( get_option( $option_names[ 'option_groups_2' ][2][ 'disable_plugin_theme_installation' ][0] ) == 'on' )
+        add_filter( 'upgrader_package_options', 'wp_custom_codes__disable_new_plugin_and_theme_installation' );
 }

@@ -22,10 +22,6 @@ function wp_custom_codes__rename_uploaded_file( $file ) {
     return $file;
 }
 
-if ( get_option( 'wpcc__og1__o1_enable_rename_uploaded_file' ) == 'on' ) {
-    add_filter( 'wp_handle_upload_prefilter', 'wp_custom_codes__rename_uploaded_file' );
-}
-
 /**
  * Custom upload mimes
  * @param array $mimes
@@ -36,6 +32,18 @@ if ( get_option( 'wpcc__og1__o1_enable_rename_uploaded_file' ) == 'on' ) {
     return $mimes;
 }
 
-if ( get_option( 'wpcc__og1__o2_enable_custom_upload_mimes' ) == 'on' ) {
-    add_filter( 'upload_mimes', 'wp_custom_codes__custom_upload_mimes' );
+
+if ( is_multisite() && get_site_option( $option_names[ 'override_for_all_sites' ][0] ) == 'on' ) {
+    if ( get_site_option( $option_names[ 'enable_rename_uploaded_file' ][0] ) == 'on' )
+        add_filter( 'wp_handle_upload_prefilter', 'wp_custom_codes__rename_uploaded_file' );
+    
+    if ( get_site_option( $option_names[ 'enable_custom_upload_mimes' ][0] ) == 'on' )
+        add_filter( 'upload_mimes', 'wp_custom_codes__custom_upload_mimes' );
+        
+} else {
+    if ( get_option( $option_names[ 'option_groups' ][2][ 'enable_rename_uploaded_file' ][0] ) == 'on' )
+        add_filter( 'wp_handle_upload_prefilter', 'wp_custom_codes__rename_uploaded_file' );
+    
+    if ( get_option( $option_names[ 'option_groups' ][2][ 'enable_custom_upload_mimes' ][0] ) == 'on' )
+        add_filter( 'upload_mimes', 'wp_custom_codes__custom_upload_mimes' );
 }

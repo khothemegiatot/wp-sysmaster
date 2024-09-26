@@ -18,6 +18,12 @@ function wp_custom_codes__configure_smtp( $phpmailer )
     $phpmailer->FromName = SMTP_NAME;
 }
 
-if ( get_option( 'wpcc__og3__o1_enable_smtp' ) == 'on' ) {
-    add_action( 'phpmailer_init', 'wp_custom_codes__configure_smtp' );
+// Add actions and filters
+if ( is_multisite() && get_site_option( $option_names[ 'override_for_all_sites' ][0] ) == 'on' ) {
+    if ( get_site_option( $option_names[ 'enable_smtp' ][0] ) == 'on' )
+        add_action( 'phpmailer_init', 'wp_custom_codes__configure_smtp' );
+        
+} else {
+    if ( get_option( $option_names[ 'option_groups' ][2][ 'enable_smtp' ][0] ) == 'on' )
+        add_action( 'phpmailer_init', 'wp_custom_codes__configure_smtp' );
 }

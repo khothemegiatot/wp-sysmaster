@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Custom Codes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-19 07:55+0000\n"
+"POT-Creation-Date: 2024-09-26 16:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -83,17 +83,32 @@ msgstr ""
 msgid "web-admin-ui__tab-4_title"
 msgstr ""
 
-msgid "wpcc__og1__o1-enable-rename-uploaded-file"
+msgid "wpcc__common__o1-enable-rename-uploaded-file"
 msgstr ""
 
-msgid "wpcc__og1__o2-enable-custom-upload-mimes"
+msgid "wpcc__common__o2-enable-custom-upload-mimes"
 msgstr ""
 
-msgid "wpcc__og3__o1-enable-smtp"
+msgid "wpcc__common__o4-enable-smtp"
 msgstr ""
 
-msgid "wpcc__og2__o1-disable_plugin_theme_installation"
+msgid "wpcc__common__o3-disable-plugin-theme-installation"
 msgstr ""
 
-msgid "wpcc__og4__o1-add-quality-rating-taxonomy"
+msgid "wpcc__o1-add-quality-rating-taxonomy"
+msgstr ""
+
+msgid "web-admin-ui__override-notice"
+msgstr ""
+
+msgid "network-settings__not-available-notice"
+msgstr ""
+
+msgid "wpcc__common__o0-override-for-all-sites"
+msgstr ""
+
+msgid "network-admin-ui__page-title"
+msgstr ""
+
+msgid "network-admin-ui__menu-title"
 msgstr ""

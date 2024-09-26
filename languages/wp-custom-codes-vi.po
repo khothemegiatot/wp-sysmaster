@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WP Custom Codes\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-02 14:45+0000\n"
-"PO-Revision-Date: 2023-11-02 15:46+0000\n"
+"PO-Revision-Date: 2024-09-26 16:15+0000\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese\n"
 "Language: vi\n"
@@ -22,6 +22,15 @@ msgstr "Tiện ích mở rộng chứa mã tùy chỉnh cho WordPress"
 #. Author URI of the plugin
 msgid "https://www.phanxuanchanh.com"
 msgstr "https://www.phanxuanchanh.com"
+
+msgid "network-admin-ui__menu-title"
+msgstr "WP Custom Codes (Thiết lập trong Network Admin)"
+
+msgid "network-admin-ui__page-title"
+msgstr "WP Custom Codes"
+
+msgid "network-settings__not-available-notice"
+msgstr "Không có sẵn trong Network Settings"
 
 #. Author of the plugin
 msgid "Phan Xuan Chanh"
@@ -60,6 +69,48 @@ msgstr "Xếp loại Chất lượng"
 msgid "quality_rating_taxonomy__update_item"
 msgstr "Cập nhật Xếp loại Chất lượng"
 
+msgid "web-admin-ui__menu-title"
+msgstr "WP Custom Codes"
+
+msgid "web-admin-ui__override-notice"
+msgstr "Các tùy chọn được ghi đè từ network settings"
+
+msgid "web-admin-ui__page-title"
+msgstr "WP Custom Codes"
+
+msgid "web-admin-ui__tab-1_title"
+msgstr "Tải lên"
+
+msgid "web-admin-ui__tab-2_title"
+msgstr "Plugin và Theme"
+
+msgid "web-admin-ui__tab-3_title"
+msgstr "SMTP"
+
+msgid "web-admin-ui__tab-4_title"
+msgstr "Đánh giá chất lượng"
+
 #. Name of the plugin
 msgid "WP Custom Codes"
 msgstr "WP Custom Codes"
+
+#| msgid ""
+#| "\n"
+#| "wpcc__common__o0-override-for-all-sites"
+msgid "wpcc__common__o0-override-for-all-sites"
+msgstr "Ghi đè các cài đặt cho các site con"
+
+msgid "wpcc__common__o1-enable-rename-uploaded-file"
+msgstr "Bật đổi tên tập tin khi tải lên hệ thống"
+
+msgid "wpcc__common__o2-enable-custom-upload-mimes"
+msgstr "Bật cho phép tải lên tập tin có MIME tùy chỉnh"
+
+msgid "wpcc__common__o3-disable-plugin-theme-installation"
+msgstr "Tắt cho phép cài đặt plugin và theme"
+
+msgid "wpcc__common__o4-enable-smtp"
+msgstr "Bật SMTP"
+
+msgid "wpcc__o1-add-quality-rating-taxonomy"
+msgstr "Bật đánh giá chất lượng bài viết"
