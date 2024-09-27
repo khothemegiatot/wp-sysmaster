@@ -52,6 +52,8 @@ add_action( 'admin_enqueue_scripts', 'wp_custom_codes__admin_enqueue_styles' );
  * Load UI and core
  */
 
+require_once 'plugin-variables.php';
+
 if( is_multisite() )
     require 'network-admin-ui.php';
 
