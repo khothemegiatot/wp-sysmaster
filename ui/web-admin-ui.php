@@ -50,8 +50,8 @@ function wp_custom_codes__options_page() {
     
     $add_quality_rating_taxonomy_enabled = get_option( $option_names[ 'option_groups_4' ][2][ 'add_quality_rating_taxonomy' ][0] );
     
-    require 'admin-ui-parts/settings-page.php';
-    require 'admin-ui-parts/css-js.php';
+    require 'parts/settings-page.php';
+    require 'parts/css-js.php';
 }
 
 /**

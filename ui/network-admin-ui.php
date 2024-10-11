@@ -38,8 +38,8 @@ function wp_custom_codes__network_options_page() {
         $plugin_theme_installation_disabled = get_site_option( $option_names[ 'disable_plugin_theme_installation' ][0] );
         $smtp_enabled = get_site_option( $option_names[ 'enable_smtp' ][0] );
         
-        require 'admin-ui-parts/network-settings-page.php';
-        require 'admin-ui-parts/css-js.php';
+        require 'parts/network-settings-page.php';
+        require 'parts/css-js.php';
         
         return;
     }
@@ -85,6 +85,6 @@ function wp_custom_codes__network_options_page() {
     settings_errors();
     echo '<div class="updated"><p>' . esc_html__( 'Settings saved.' ) . '</p></div>';
     
-    require 'admin-ui-parts/network-settings-page.php';
-    require 'admin-ui-parts/css-js.php';
+    require 'parts/network-settings-page.php';
+    require 'parts/css-js.php';
 }
