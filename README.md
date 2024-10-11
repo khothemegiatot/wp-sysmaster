@@ -36,4 +36,4 @@ Enhances Japanese content by displaying Furigana (Yomigana) over Kanji character
 This plugin is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Credits
-- PHP Opcache module inspired by [WP OPcache](https://wordpress.org/plugins/flush-opcache/).
+- Module 'opcache' inspired by [WP OPcache](https://wordpress.org/plugins/flush-opcache/).
