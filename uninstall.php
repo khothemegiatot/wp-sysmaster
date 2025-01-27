@@ -2,7 +2,8 @@
 
 if ( !defined( 'ABSPATH' ) ) exit;
 
-require 'plugin-variables.php';
+require 'config.php';
+require 'core/class/class-option-mgr.php';
 
 /**
  * Executed when WordPress tries to delete this plugin.
@@ -12,33 +13,10 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) || ! WP_UNINSTALL_PLUGIN ||
 	exit;
 }
 
+$option_mgr = new OptionMgr( $wp_sysmaster_000__option_name );
+
 if ( is_multisite() ) {
-    delete_site_option( $option_names[ 'enable_rename_uploaded_file' ][0] );
-    delete_site_option( $option_names[ 'enable_custom_upload_mimes' ][0] );
-    delete_site_option( $option_names[ 'disable_plugin_theme_installation' ][0] );
-    delete_site_option( $option_names[ 'enable_smtp' ][0] );
+    $option_mgr -> remove_option( $network = true );
 }
 
-$option_group = $option_names[ 'option_group_1' ][2];
-
-foreach ( $item as $option_group ) {
-    delete_option( $item[0] );
-}
-
-$option_group = $option_names[ 'option_group_2' ][2];
-
-foreach ( $item as $option_group ) {
-    delete_option( $item[0] );
-}
-
-$option_group = $option_names[ 'option_group_3' ][2];
-
-foreach ( $item as $option_group ) {
-    delete_option( $item[0] );
-}
-
-$option_group = $option_names[ 'option_group_4' ][2];
-
-foreach ( $item as $option_group ) {
-    delete_option( $item[0] );
-}
+$option_mgr -> remove_option();

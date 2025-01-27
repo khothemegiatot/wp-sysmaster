@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Plugin Name: WP Custom Codes
+ * Plugin Name: WP SysMaster
  * Description: A plugin containing code snippets used for system customization.
- * Version: 2.2.1
+ * Version: 2.3
  * Author: Chanh Phan Xuan
  * Author URI: https://www.phanxuanchanh.com/
  * Network: true
@@ -14,36 +14,33 @@
 
 if ( !defined( 'ABSPATH' ) ) exit;
 
-require 'config.php';
-
 /**
  * Load plugin
  */
-function wp_custom_codes__load_plugin() {
-    load_plugin_textdomain( 'wp-custom-codes', false, dirname( plugin_basename(__FILE__) ) . '/languages/' );
+function wp_sysmaster_000__load_plugin() {
+    load_plugin_textdomain( 'wp_sysmaster_000', false, dirname( plugin_basename(__FILE__) ) . '/languages/' );
     
-    require 'plugin-variables.php';
-    
-    // Load ui
-    if( is_multisite() )
-        require 'ui/network-admin-ui.php';
+    $pluin_dir_path = plugin_dir_path( __FILE__ );
 
-    require 'ui/web-admin-ui.php';
+    require $pluin_dir_path . 'config.php';
     
-    // Load core
-    require 'core/enqueue.php';
-    require 'core/upload.php';
-    require 'core/smtp.php';
-    require 'core/plugins-and-themes.php';
-    require 'core/quality-rating-taxonomy.php';
-    
+    // Load core (classes and functions)
+    require $pluin_dir_path . 'core/class/class-option-mgr.php';
+    require $pluin_dir_path . 'core/functions/func-1.php';
+
+    // Load UI
+    require $pluin_dir_path . 'ui/admin-ui.php';
+
     // Load modules
-    require 'opcache/flush-opcache.php';
-    require 'terminal/terminal.php';
-    require 'yomigana/yomigana.php';
+    require $pluin_dir_path . 'opcache/flush-opcache.php';
+    //require $pluin_dir_path . 'terminal/terminal.php';
+    //require $pluin_dir_path . 'yomigana/yomigana.php';
     
     // Load add-ons
-    require 'add-ons/buy-me-coffee.php';
+    require $pluin_dir_path . 'add-ons/buy-me-coffee.php';
+    
+    // Actions and filters
+    require $pluin_dir_path . 'core/actions-filters.php';
 }
 
-add_action( 'plugins_loaded', 'wp_custom_codes__load_plugin' );
+add_action( 'plugins_loaded', 'wp_sysmaster_000__load_plugin' );
