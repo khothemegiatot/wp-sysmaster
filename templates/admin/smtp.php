@@ -1,7 +1,10 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-$smtp_settings = get_option('wp_sysmaster_smtp_settings', []);
+use WPSysMaster\Admin\SMTP;
+
+$smtp = SMTP::getInstance();
+$smtp_settings = $smtp->getSettings();
 ?>
 
 <div class="wrap">
@@ -18,8 +21,7 @@ $smtp_settings = get_option('wp_sysmaster_smtp_settings', []);
                     <label>
                         <input type="checkbox" 
                                name="wp_sysmaster_smtp_settings[enabled]" 
-                               value="1" 
-                               <?php checked($smtp_settings['enabled'] ?? false); ?>>
+                               <?php checked($smtp_settings['enabled'] ?? '', 'on'); ?>>
                         <?php _e('Kích hoạt SMTP', 'wp-sysmaster'); ?>
                     </label>
                 </p>
@@ -94,8 +96,11 @@ $smtp_settings = get_option('wp_sysmaster_smtp_settings', []);
                     <input type="password" 
                            id="smtp_password"
                            name="wp_sysmaster_smtp_settings[password]" 
-                           value="<?php echo esc_attr($smtp_settings['password'] ?? ''); ?>" 
-                           class="regular-text">
+                           class="regular-text"
+                           autocomplete="new-password">
+                    <span class="description">
+                        <?php _e('Để trống nếu không muốn thay đổi mật khẩu', 'wp-sysmaster'); ?>
+                    </span>
                 </p>
             </div>
 
@@ -138,6 +143,7 @@ $smtp_settings = get_option('wp_sysmaster_smtp_settings', []);
                             id="send_test_email">
                         <?php _e('Send Test Email', 'wp-sysmaster'); ?>
                     </button>
+                    <span class="spinner" style="float:none;"></span>
                 </p>
                 <div id="test_email_result"></div>
             </div>
@@ -190,12 +196,22 @@ $smtp_settings = get_option('wp_sysmaster_smtp_settings', []);
     border: 1px solid #ebccd1;
     color: #a94442;
 }
+
+.spinner {
+    visibility: hidden;
+    margin-left: 5px;
+}
+
+.spinner.is-active {
+    visibility: visible;
+}
 </style>
 
 <script>
 jQuery(document).ready(function($) {
     $('#send_test_email').on('click', function() {
         var $button = $(this);
+        var $spinner = $button.next('.spinner');
         var $result = $('#test_email_result');
         var testEmail = $('#test_email').val();
         
@@ -205,6 +221,7 @@ jQuery(document).ready(function($) {
         }
         
         $button.prop('disabled', true);
+        $spinner.addClass('is-active');
         $result.removeClass('success error').hide();
         
         $.ajax({
@@ -218,7 +235,7 @@ jQuery(document).ready(function($) {
             success: function(response) {
                 if (response.success) {
                     $result.addClass('success')
-                           .html('<?php _e('Test email sent successfully!', 'wp-sysmaster'); ?>')
+                           .html(response.data)
                            .show();
                 } else {
                     $result.addClass('error')
@@ -226,13 +243,14 @@ jQuery(document).ready(function($) {
                            .show();
                 }
             },
-            error: function() {
+            error: function(xhr, status, error) {
                 $result.addClass('error')
-                       .html('<?php _e('An error occurred while sending the test email.', 'wp-sysmaster'); ?>')
+                       .html('<?php _e('An error occurred while sending the test email.', 'wp-sysmaster'); ?> (' + error + ')')
                        .show();
             },
             complete: function() {
                 $button.prop('disabled', false);
+                $spinner.removeClass('is-active');
             }
         });
     });

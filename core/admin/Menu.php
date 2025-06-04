@@ -65,6 +65,16 @@ class Menu {
             [$this, 'renderCodeInjection']
         );
 
+        // Upload Settings
+        add_submenu_page(
+            'wp-sysmaster',
+            __('Upload Settings', 'wp-sysmaster'),
+            __('Upload', 'wp-sysmaster'),
+            'manage_options',
+            'wp-sysmaster-upload',
+            [$this, 'renderUpload']
+        );
+
         // SMTP
         add_submenu_page(
             'wp-sysmaster',
@@ -183,6 +193,8 @@ class Menu {
         }
 
         wp_sysmaster_get_template('admin/ai-settings.php');
+        // $ai_settings = new \WPSysMaster\AI\Settings\AISettingsPage();
+        // $ai_settings->renderSettingsPage();
     }
 
     /**
@@ -194,6 +206,17 @@ class Menu {
         }
 
         wp_sysmaster_get_template('admin/settings.php');
+    }
+
+    /**
+     * Render trang Upload
+     */
+    public function renderUpload() {
+        if (!wp_sysmaster_is_admin()) {
+            wp_die(__('You do not have sufficient permissions to access this page.', 'wp-sysmaster'));
+        }
+
+        require_once WP_SYSMASTER_TEMPLATES_DIR . 'admin/upload.php';
     }
 
     /**

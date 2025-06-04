@@ -2,6 +2,8 @@
 
 if ( !defined( 'ABSPATH' ) ) exit;
 
+use WPSysMaster\Admin\SMTP;
+
 /**
  * Rename uploaded file
  * @param array $file
@@ -32,21 +34,6 @@ function wp_sysmaster_000__rename_uploaded_file( $file ) {
     return $mimes;
 }
 
-/**
- * Configure SMTP
- */
-function wp_sysmaster_000__configure_smtp( $phpmailer )
-{
-    $phpmailer->isSMTP();
-    $phpmailer->Host = SMTP_HOST;
-    $phpmailer->SMTPAuth = SMTP_AUTH;
-    $phpmailer->Port = SMTP_PORT;
-    $phpmailer->Username = SMTP_USER;
-    $phpmailer->Password = SMTP_PASS;
-    $phpmailer->SMTPSecure = SMTP_SECURE;
-    $phpmailer->From = SMTP_FROM;
-    $phpmailer->FromName = SMTP_NAME;
-}
 
 
 /**

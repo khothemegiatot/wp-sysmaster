@@ -59,14 +59,14 @@ class AISettingsPage {
      * Thêm trang cài đặt
      */
     public function addSettingsPage() {
-        add_submenu_page(
-            'wp-sysmaster',
-            __('AI Settings', 'wp-sysmaster'),
-            __('AI Settings', 'wp-sysmaster'),
-            'manage_options',
-            'wp-sysmaster-ai-settings',
-            [$this, 'renderSettingsPage']
-        );
+        // add_submenu_page(
+        //     'wp-sysmaster',
+        //     __('AI Settings', 'wp-sysmaster'),
+        //     __('AI Settings', 'wp-sysmaster'),
+        //     'manage_options',
+        //     'wp-sysmaster-ai-settings',
+        //     [$this, 'renderSettingsPage']
+        // );
     }
 
     /**
@@ -92,7 +92,7 @@ class AISettingsPage {
             'wp_sysmaster_openai_section',
             __('OpenAI Settings', 'wp-sysmaster'),
             [$this, 'renderOpenAISection'],
-            'wp_sysmaster_ai_settings'
+            'wp-sysmaster-ai-settings'
         );
 
         // API Key
@@ -100,7 +100,7 @@ class AISettingsPage {
             'openai_api_key',
             __('API Key', 'wp-sysmaster'),
             [$this, 'renderAPIKeyField'],
-            'wp_sysmaster_ai_settings',
+            'wp-sysmaster-ai-settings',
             'wp_sysmaster_openai_section'
         );
 
@@ -109,7 +109,7 @@ class AISettingsPage {
             'openai_model',
             __('Model', 'wp-sysmaster'),
             [$this, 'renderModelField'],
-            'wp_sysmaster_ai_settings',
+            'wp-sysmaster-ai-settings',
             'wp_sysmaster_openai_section'
         );
 
@@ -238,37 +238,8 @@ class AISettingsPage {
         // Hiển thị thông báo
         settings_errors('wp_sysmaster_ai_settings');
 
-        ?>
-        <div class="wrap">
-            <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
-
-            <form action="options.php" method="post">
-                <?php
-                settings_fields('wp_sysmaster_ai_settings');
-                do_settings_sections('wp-sysmaster-ai-settings');
-                submit_button(__('Save Settings', 'wp-sysmaster'));
-                ?>
-            </form>
-
-            <h2><?php _e('Test Connections', 'wp-sysmaster'); ?></h2>
-            <form action="" method="post">
-                <?php wp_nonce_field('wp_sysmaster_ai_test'); ?>
-                <table class="form-table">
-                    <tr>
-                        <th scope="row"><?php _e('Select Provider', 'wp-sysmaster'); ?></th>
-                        <td>
-                            <select name="test_provider">
-                                <option value="openai">OpenAI</option>
-                                <option value="gemini">Google Gemini</option>
-                                <option value="locallm">Local LM</option>
-                            </select>
-                            <?php submit_button(__('Test Connection', 'wp-sysmaster'), 'secondary', 'wp_sysmaster_ai_test', false); ?>
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-        <?php
+        // Render template
+        wp_sysmaster_get_template('admin/ai-settings.php');
     }
 
     /**
@@ -338,7 +309,7 @@ class AISettingsPage {
     /**
      * Render OpenAI description
      */
-    public function renderOpenAIDescription() {
+    public function renderOpenAISection() {
         ?>
         <p>
             <?php _e('Configure your OpenAI API settings. You can get your API key from the OpenAI dashboard.', 'wp-sysmaster'); ?>
@@ -444,5 +415,89 @@ class AISettingsPage {
                 'message' => $e->getMessage()
             ];
         }
+    }
+
+    /**
+     * Render API Key field
+     */
+    public function renderAPIKeyField() {
+        $options = get_option(WP_SYSMASTER_AI_OPTIONS_KEY);
+        $value = isset($options['openai_api_key']) ? $options['openai_api_key'] : '';
+        ?>
+        <input 
+            type="password" 
+            id="openai_api_key" 
+            name="wp_sysmaster_ai_settings[openai_api_key]" 
+            value="<?php echo esc_attr($value); ?>" 
+            class="regular-text"
+        >
+        <p class="description">
+            <?php _e('Enter your OpenAI API key. You can get one from', 'wp-sysmaster'); ?>
+            <a href="https://platform.openai.com/account/api-keys" target="_blank">OpenAI Dashboard</a>
+        </p>
+        <?php
+    }
+
+    /**
+     * Render Model field
+     */
+    public function renderModelField() {
+        $options = get_option(WP_SYSMASTER_AI_OPTIONS_KEY);
+        $value = isset($options['openai_model']) ? $options['openai_model'] : 'gpt-3.5-turbo';
+        ?>
+        <select 
+            id="openai_model" 
+            name="wp_sysmaster_ai_settings[openai_model]" 
+            class="regular-text"
+        >
+            <option value="gpt-3.5-turbo" <?php selected($value, 'gpt-3.5-turbo'); ?>>
+                GPT-3.5 Turbo
+            </option>
+            <option value="gpt-4" <?php selected($value, 'gpt-4'); ?>>
+                GPT-4
+            </option>
+        </select>
+        <?php
+    }
+
+    /**
+     * Sanitize settings
+     */
+    public function sanitizeSettings($input) {
+        $sanitized = [];
+
+        // OpenAI Settings
+        if (isset($input['openai_api_key'])) {
+            $sanitized['openai_api_key'] = sanitize_text_field($input['openai_api_key']);
+        }
+
+        if (isset($input['openai_model'])) {
+            $sanitized['openai_model'] = sanitize_text_field($input['openai_model']);
+        }
+
+        // Gemini Settings
+        if (isset($input['gemini_api_key'])) {
+            $sanitized['gemini_api_key'] = sanitize_text_field($input['gemini_api_key']);
+        }
+
+        if (isset($input['gemini_model'])) {
+            $sanitized['gemini_model'] = sanitize_text_field($input['gemini_model']);
+        }
+
+        // Local LM Settings
+        if (isset($input['locallm_endpoint'])) {
+            $sanitized['locallm_endpoint'] = esc_url_raw($input['locallm_endpoint']);
+        }
+
+        // Embedding Settings
+        if (isset($input['embedding_provider'])) {
+            $sanitized['embedding_provider'] = sanitize_text_field($input['embedding_provider']);
+        }
+
+        if (isset($input['embedding_post_types']) && is_array($input['embedding_post_types'])) {
+            $sanitized['embedding_post_types'] = array_map('sanitize_text_field', $input['embedding_post_types']);
+        }
+
+        return $sanitized;
     }
 } 
