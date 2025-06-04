@@ -1,35 +1,45 @@
-# WP SysMaster - Plugin WordPress tích hợp AI
+# WP SysMaster - WordPress Plugin with AI Integration
 
-## Cấu trúc thư mục
+A powerful WordPress plugin that enhances your system with AI capabilities and additional features.
+
+## Features
+
+- AI Integration (OpenAI, Google Gemini, Local LM)
+- Custom Upload Management
+- SMTP Configuration
+- Security Enhancements
+- Multi-language Support
+
+## Directory Structure
 
 ```
 wp-sysmaster/
-├── assets/                 # Tài nguyên tĩnh (CSS, JS, images)
+├── assets/                 # Static resources (CSS, JS, images)
 │   ├── css/
-│   │   ├── admin/         # CSS cho trang admin
-│   │   └── public/        # CSS cho frontend
+│   │   ├── admin/         # Admin CSS
+│   │   └── public/        # Frontend CSS
 │   ├── js/
-│   │   ├── admin/         # JavaScript cho trang admin
-│   │   └── public/        # JavaScript cho frontend
-│   └── images/            # Hình ảnh
+│   │   ├── admin/         # Admin JavaScript
+│   │   └── public/        # Frontend JavaScript
+│   └── images/            # Images
 │
-├── core/                   # Mã nguồn chính
-│   ├── admin/             # Quản lý giao diện admin
-│   │   ├── Menu.php       # Quản lý menu admin
-│   │   └── init.php       # Khởi tạo admin
+├── core/                   # Core source code
+│   ├── admin/             # Admin interface management
+│   │   ├── Menu.php       # Admin menu management
+│   │   └── init.php       # Admin initialization
 │   │
-│   ├── ai/                # Tích hợp AI
-│   │   ├── providers/     # Các nhà cung cấp AI
+│   ├── ai/                # AI Integration
+│   │   ├── providers/     # AI providers
 │   │   │   ├── OpenAIProvider.php
 │   │   │   ├── GeminiProvider.php
 │   │   │   └── LocalLMProvider.php
 │   │   │
-│   │   ├── embeddings/    # Xử lý embeddings
+│   │   ├── embeddings/    # Embeddings handling
 │   │   │   ├── EmbeddingAPI.php
 │   │   │   ├── EmbeddingManager.php
 │   │   │   └── EmbeddingHooks.php
 │   │   │
-│   │   ├── settings/      # Cài đặt AI
+│   │   ├── settings/      # AI settings
 │   │   │   ├── AISettingsPage.php
 │   │   │   └── init.php
 │   │   │
@@ -37,190 +47,131 @@ wp-sysmaster/
 │   │   ├── AbstractAIProvider.php
 │   │   └── AIProviderFactory.php
 │   │
-│   └── includes/          # Các file hỗ trợ
-│       ├── helpers.php    # Hàm tiện ích
-│       └── constants.php  # Các hằng số
+│   └── includes/          # Helper files
+│       ├── helpers.php    # Utility functions
+│       └── constants.php  # Constants
 │
-├── languages/             # File ngôn ngữ
+├── languages/             # Language files
 │   ├── wp-sysmaster.pot
 │   └── wp-sysmaster-vi.po
 │
 ├── templates/             # Template files
-│   ├── admin/            # Template cho admin
-│   └── public/           # Template cho frontend
+│   ├── admin/            # Admin templates
+│   └── public/           # Frontend templates
 │
-├── vendor/               # Thư viện bên thứ 3 (Composer)
-├── wp-sysmaster.php     # File chính của plugin
-├── uninstall.php        # Xử lý gỡ cài đặt
-└── README.md            # Tài liệu
+├── vendor/               # Third-party libraries (Composer)
+├── wp-sysmaster.php     # Main plugin file
+├── uninstall.php        # Uninstall handler
+└── README.md            # Documentation
 ```
 
-## Nguyên tắc tổ chức code
+## Code Organization Principles
 
 1. **Namespace**
-   - Sử dụng namespace `WPSysMaster` cho toàn bộ plugin
-   - Các namespace con tương ứng với cấu trúc thư mục
-   - Ví dụ: `WPSysMaster\AI\Providers\OpenAIProvider`
+   - Uses `WPSysMaster` namespace for the entire plugin
+   - Subnamespaces correspond to directory structure
+   - Example: `WPSysMaster\AI\Providers\OpenAIProvider`
 
 2. **Autoloading**
-   - Sử dụng PSR-4 autoloading
-   - Đăng ký autoloader trong file chính của plugin
-   - Tất cả class phải tuân thủ quy tắc đặt tên PSR-4
+   - Uses PSR-4 autoloading
+   - Registers autoloader in main plugin file
+   - All classes follow PSR-4 naming convention
 
 3. **Dependency Injection**
-   - Sử dụng constructor injection
-   - Tránh khởi tạo trực tiếp object trong class
-   - Sử dụng Factory pattern khi cần
+   - Uses constructor injection
+   - Avoids direct object instantiation in classes
+   - Uses Factory pattern when needed
 
 4. **Hooks & Filters**
-   - Đăng ký hooks trong file init.php của mỗi module
-   - Sử dụng method riêng cho mỗi hook callback
-   - Prefix tất cả hook names với `wp_sysmaster_`
+   - Registers hooks in each module's init.php
+   - Uses separate methods for hook callbacks
+   - Prefixes all hook names with `wp_sysmaster_`
 
 5. **Database**
-   - Prefix tất cả option names với `wp_sysmaster_`
-   - Sử dụng WordPress Options API cho cài đặt
-   - Tạo bảng riêng cho dữ liệu phức tạp
+   - Prefixes all option names with `wp_sysmaster_`
+   - Uses WordPress Options API for settings
+   - Creates separate tables for complex data
 
 6. **Templates**
-   - Tách biệt logic và presentation
-   - Sử dụng template files trong thư mục templates/
-   - Cho phép override template trong theme
+   - Separates logic and presentation
+   - Uses template files in templates/ directory
+   - Allows template override in theme
 
-7. **Internationalization**
-   - Sử dụng hàm __() cho text
-   - Load textdomain trong hook init
-   - Cung cấp file .pot cho translation
+7. **Security**
+   - Checks nonce for all form submissions
+   - Escapes output with esc_*() functions
+   - Verifies capabilities before actions
 
-8. **Security**
-   - Kiểm tra nonce cho tất cả form submissions
-   - Escape output với các hàm esc_*()
-   - Kiểm tra capabilities trước khi thực hiện action
+## System Requirements
 
-9. **Error Handling**
-   - Sử dụng WP_Error cho error handling
-   - Log errors với error_log()
-   - Hiển thị user-friendly error messages
+- WordPress 5.0 or higher
+- PHP 7.4 or higher
+- WordPress admin privileges
 
-10. **Assets**
-    - Enqueue scripts/styles đúng hook
-    - Minify và combine files cho production
-    - Sử dụng version number cho cache busting
+## Installation
 
-## Quy tắc code style
+1. Download the plugin from WordPress.org or this repository
+2. Extract and upload `wp-sysmaster` directory to `/wp-content/plugins/`
+3. Activate the plugin through WordPress Plugins menu
 
-1. **PHP**
-   - Tuân thủ WordPress Coding Standards
-   - Sử dụng PHP DocBlocks cho documentation
-   - Indent với 4 spaces
+## Configuration
 
-2. **JavaScript**
-   - Sử dụng ES6+ features
-   - Đóng gói với Webpack
-   - Sử dụng JSDoc cho documentation
+### AI Settings
 
-3. **CSS**
-   - Sử dụng BEM naming convention
-   - Prefix tất cả class với `wp-sysmaster-`
-   - Tổ chức code theo component
+1. Go to **WP SysMaster > AI Settings**
+2. Configure your AI providers:
+   - OpenAI API Key and Model
+   - Google Gemini API Key
+   - Local LM Endpoint
+3. Save settings
 
-Plugin WordPress mạnh mẽ cho phép tùy chỉnh hệ thống và thêm các tính năng bổ sung.
+### Upload Settings
 
-## Tính năng
+1. Go to **WP SysMaster > Upload**
+2. Configure custom MIME types
+3. Set file naming rules
+4. Save settings
 
-- Quản lý cấu hình SMTP
-- Tối ưu hóa OPCache
-- Tích hợp Buy Me a Coffee
-- Hỗ trợ đa ngôn ngữ
+## Development
 
-## Yêu cầu hệ thống
-
-- WordPress 5.0 trở lên
-- PHP 7.4 trở lên
-- Quyền quản trị WordPress
-
-## Cài đặt
-
-1. Tải plugin từ WordPress.org hoặc tải trực tiếp từ repository này
-2. Giải nén và upload thư mục `wp-sysmaster` vào `/wp-content/plugins/`
-3. Kích hoạt plugin trong menu Plugins của WordPress
-
-## Cấu hình
-
-### Cấu hình SMTP
-
-1. Truy cập **WP SysMaster > Cài đặt > SMTP**
-2. Nhập thông tin máy chủ SMTP:
-   - Host
-   - Port
-   - Username
-   - Password
-   - From Email
-   - From Name
-3. Lưu cài đặt
-
-### Tối ưu OPCache
-
-1. Truy cập **WP SysMaster > Công cụ > OPCache**
-2. Xem thống kê và quản lý cache
-3. Sử dụng nút "Xóa Cache" để làm mới OPCache
-
-### Buy Me a Coffee
-
-1. Truy cập **WP SysMaster > Cài đặt > Buy Me a Coffee**
-2. Nhập Buy Me a Coffee ID của bạn
-3. Bật/tắt hiển thị nút Buy Me a Coffee trong bài viết
-
-## Phát triển
-
-### Cấu trúc thư mục
-
-```
-wp-sysmaster/
-├── add-ons/
-├── assets/
-├── core/
-├── languages/
-├── opcache/
-├── ui/
-├── config.php
-├── main.php
-└── README.md
-```
-
-### Hooks và Filters
-
-Plugin cung cấp các hooks và filters sau để mở rộng chức năng:
+### Available Hooks
 
 ```php
-// Thay đổi cài đặt mặc định
+// Modify default settings
 add_filter('wp_sysmaster_default_options', 'your_function');
 
-// Chạy trước khi lưu cài đặt
+// Run before saving settings
 add_action('wp_sysmaster_before_save_options', 'your_function');
 
-// Chạy sau khi lưu cài đặt
+// Run after saving settings
 add_action('wp_sysmaster_after_save_options', 'your_function');
 ```
 
-## Hỗ trợ
+## Support
 
-Nếu bạn cần hỗ trợ, vui lòng:
+If you need help:
 
-1. Kiểm tra [tài liệu](https://www.phanxuanchanh.com/wp-sysmaster)
-2. Tạo issue trên GitHub
-3. Gửi email hỗ trợ
+1. Check the [documentation](https://www.phanxuanchanh.com/wp-sysmaster)
+2. Create an issue on GitHub
+3. Send support email
 
-## Đóng góp
+## Contributing
 
-Chúng tôi luôn chào đón đóng góp từ cộng đồng. Để đóng góp:
+We welcome contributions from the community. To contribute:
 
-1. Fork repository
-2. Tạo branch mới (`git checkout -b feature/AmazingFeature`)
-3. Commit thay đổi (`git commit -m 'Add some AmazingFeature'`)
-4. Push lên branch (`git push origin feature/AmazingFeature`)
-5. Tạo Pull Request
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## Giấy phép
+## License
 
-Plugin này được phát hành dưới giấy phép GPL v2 hoặc mới hơn.
+This plugin is released under the GNU General Public License v2 or later (GPL v2 or later). This means you can:
+
+- Use the plugin for any purpose
+- Modify the plugin and distribute your modifications
+- Redistribute the plugin
+- All derivative works must also be licensed under GPL v2 or later
+
+For more details, see [GNU General Public License v2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
