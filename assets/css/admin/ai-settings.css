@@ -1,0 +1,73 @@
+.wp-sysmaster-ai-settings {
+    max-width: 800px;
+    margin: 20px 0;
+}
+
+.wp-sysmaster-ai-settings .form-table th {
+    width: 200px;
+}
+
+.wp-sysmaster-ai-settings .form-table td {
+    padding: 15px 10px;
+}
+
+.wp-sysmaster-ai-settings .description {
+    margin-top: 5px;
+    color: #666;
+}
+
+.wp-sysmaster-ai-settings fieldset label {
+    margin: 5px 0;
+    display: inline-block;
+}
+
+.wp-sysmaster-ai-settings .button-secondary {
+    margin-left: 10px;
+}
+
+.wp-sysmaster-ai-settings select {
+    min-width: 200px;
+}
+
+.wp-sysmaster-ai-settings input[type="text"],
+.wp-sysmaster-ai-settings input[type="password"] {
+    min-width: 300px;
+}
+
+.wp-sysmaster-ai-settings .section-description {
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-left: 4px solid #0073aa;
+}
+
+.wp-sysmaster-ai-settings .test-connection {
+    margin-top: 20px;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.wp-sysmaster-ai-settings .test-connection h2 {
+    margin-top: 0;
+}
+
+/* Responsive */
+@media screen and (max-width: 782px) {
+    .wp-sysmaster-ai-settings .form-table th {
+        width: 100%;
+        display: block;
+    }
+    
+    .wp-sysmaster-ai-settings .form-table td {
+        padding: 10px 0;
+    }
+    
+    .wp-sysmaster-ai-settings input[type="text"],
+    .wp-sysmaster-ai-settings input[type="password"],
+    .wp-sysmaster-ai-settings select {
+        width: 100%;
+        max-width: 100%;
+    }
+} 

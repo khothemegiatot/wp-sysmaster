@@ -1,0 +1,152 @@
+/**
+ * Common admin styles
+ */
+
+/* Dashboard */
+.wp-sysmaster-dashboard {
+    margin: 20px 0;
+}
+
+.wp-sysmaster-welcome-panel {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.wp-sysmaster-welcome-panel h2 {
+    margin-top: 0;
+    font-size: 23px;
+    font-weight: 400;
+}
+
+.wp-sysmaster-quick-actions {
+    margin-top: 20px;
+}
+
+.wp-sysmaster-action-buttons {
+    margin-top: 10px;
+}
+
+.wp-sysmaster-action-buttons .button {
+    margin-right: 10px;
+}
+
+.wp-sysmaster-dashboard-widgets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.wp-sysmaster-widget {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    padding: 15px;
+}
+
+.wp-sysmaster-widget h3 {
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.wp-sysmaster-activity-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.wp-sysmaster-activity-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f1;
+}
+
+.wp-sysmaster-activity-list li:last-child {
+    border-bottom: none;
+}
+
+.wp-sysmaster-activity-list .activity-time {
+    color: #646970;
+    font-size: 12px;
+    display: block;
+}
+
+.wp-sysmaster-activity-list .activity-message {
+    display: block;
+    margin-top: 3px;
+}
+
+/* Forms */
+.wp-sysmaster-form-row {
+    margin-bottom: 15px;
+}
+
+.wp-sysmaster-form-row label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.wp-sysmaster-form-row .description {
+    margin-top: 5px;
+    color: #646970;
+    font-style: italic;
+}
+
+/* Tables */
+.wp-sysmaster-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.wp-sysmaster-table th,
+.wp-sysmaster-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f1;
+}
+
+.wp-sysmaster-table th {
+    font-weight: 600;
+    color: #1d2327;
+}
+
+/* Messages */
+.wp-sysmaster-message {
+    padding: 12px;
+    margin: 15px 0;
+    background: #fff;
+    border-left: 4px solid #72aee6;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.wp-sysmaster-message.success {
+    border-left-color: #00a32a;
+}
+
+.wp-sysmaster-message.error {
+    border-left-color: #d63638;
+}
+
+.wp-sysmaster-message.warning {
+    border-left-color: #dba617;
+}
+
+/* Responsive */
+@media screen and (max-width: 782px) {
+    .wp-sysmaster-dashboard-widgets {
+        grid-template-columns: 1fr;
+    }
+
+    .wp-sysmaster-form-row label {
+        margin-bottom: 8px;
+    }
+
+    .wp-sysmaster-table th,
+    .wp-sysmaster-table td {
+        padding: 10px;
+    }
+} 
