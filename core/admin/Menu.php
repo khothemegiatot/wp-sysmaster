@@ -55,15 +55,6 @@ class Menu {
             [$this, 'renderDashboard']
         );
 
-        // Chèn mã
-        add_submenu_page(
-            'wp-sysmaster',
-            __('Chèn mã', 'wp-sysmaster'),
-            __('Chèn mã', 'wp-sysmaster'),
-            'manage_options',
-            'wp-sysmaster-code-injection',
-            [$this, 'renderCodeInjection']
-        );
 
         // Upload Settings
         add_submenu_page(

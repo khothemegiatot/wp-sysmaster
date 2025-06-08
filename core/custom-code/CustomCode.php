@@ -1,5 +1,5 @@
 <?php
-namespace WPSysMaster\Admin;
+namespace WPSysMaster\CustomCode;
 
 if (!defined('ABSPATH')) {
     exit;
@@ -13,21 +13,29 @@ class CustomCode {
     /**
      * Instance của class
      * Instance of the class
+     * @var CustomCode|null
+     * @access private
+     * @static
      */
     private static $instance = null;
 
     /**
      * Constructor
+     * @access private
+     * @return void
      */
     private function __construct() {
-        $this->init_hooks();
+        $this->initHooks();
     }
 
     /**
      * Lấy instance của class
      * Get class instance
+     * @access public
+     * @static
+     * @return CustomCode|null
      */
-    public static function getInstance() {
+    public static function getInstance(): CustomCode|null {
         if (null === self::$instance) {
             self::$instance = new self();
         }
@@ -35,12 +43,25 @@ class CustomCode {
     }
 
     /**
+     * Render trang Chèn mã
+     */
+    public function renderCodeInjection() {
+        if (!wp_sysmaster_is_admin()) {
+            wp_die(__('You do not have sufficient permissions to access this page.', 'wp-sysmaster'));
+        }
+
+        wp_sysmaster_get_template('admin/code-injection.php');
+    }
+
+    /**
      * Khởi tạo hooks
      * Initialize hooks
+     * @access private
+     * @return void
      */
-    private function init_hooks() {
+    private function initHooks(): void {
         // Hooks cho frontend
-        add_action('wp_head', array($this, 'insert_header_code'), 999);
+        add_action('wp_head', array($this, 'insertHeaderCode'), 999);
         
         // Thêm body scripts
         if (function_exists('wp_body_open')) {
@@ -57,6 +78,17 @@ class CustomCode {
         if (is_admin()) {
             add_action('admin_init', array($this, 'register_settings'));
             add_action('wp_ajax_wp_custom_codes_test_php', array($this, 'ajax_test_php'));
+            add_action('admin_menu', function(){
+                // Chèn mã
+                add_submenu_page(
+                    'wp-sysmaster',
+                    __('Chèn mã', 'wp-sysmaster'),
+                    __('Chèn mã', 'wp-sysmaster'),
+                    'manage_options',
+                    'wp-sysmaster-code-injection',
+                    [$this, 'renderCodeInjection']
+                );
+            });
         }
     }
 
@@ -111,13 +143,15 @@ class CustomCode {
     /**
      * Chèn mã tùy chỉnh vào header
      * Insert custom code into header
+     * @access public
+     * @return void
      */
-    public function insert_header_code() {
+    public function insertHeaderCode(): void {
         $settings = get_option('wp_sysmaster_code_settings', array());
-        
+
         // Custom CSS
         if (!empty($settings['custom_css'])) {
-            echo '<style type="text/css">' . "\n";
+            echo '<style type="text/css" id="wp-sysmaster-custom-css">' . "\n";
             echo wp_strip_all_tags($settings['custom_css']) . "\n";
             echo '</style>' . "\n";
         }

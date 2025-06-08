@@ -166,6 +166,7 @@ class SMTP {
         $settings = get_option(self::OPTION_NAME, []);
 
         // Kiểm tra xem SMTP có được bật không
+        // Check if SMTP is enabled
         if (!isset($settings['enabled']) || $settings['enabled'] !== 'on') {
             return;
         }

@@ -53,7 +53,7 @@ $smtp_settings = $smtp->getSettings();
                            value="<?php echo esc_attr($smtp_settings['port'] ?? '587'); ?>" 
                            class="small-text">
                     <span class="description">
-                        <?php _e('VD: 587 hoặc 465', 'wp-sysmaster'); ?>
+                        <?php _e('Example: 587 or 465', 'wp-sysmaster'); ?>
                     </span>
                 </p>
 
@@ -99,7 +99,7 @@ $smtp_settings = $smtp->getSettings();
                            class="regular-text"
                            autocomplete="new-password">
                     <span class="description">
-                        <?php _e('Để trống nếu không muốn thay đổi mật khẩu', 'wp-sysmaster'); ?>
+                        <?php _e('Leave empty if you do not want to change the password', 'wp-sysmaster'); ?>
                     </span>
                 </p>
             </div>
