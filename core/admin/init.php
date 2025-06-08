@@ -46,6 +46,10 @@ class Init {
         // Load SMTP class
         require_once WP_SYSMASTER_PLUGIN_DIR . 'core/admin/SMTP.php';
         SMTP::getInstance();
+
+        // Load CustomCode class
+        require_once WP_SYSMASTER_PLUGIN_DIR . 'core/admin/CustomCode.php';
+        CustomCode::getInstance();
     }
 
     /**

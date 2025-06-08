@@ -1,0 +1,139 @@
+.wp-sysmaster-opcache-actions {
+    margin: 20px 0;
+}
+
+.wp-sysmaster-opcache-status,
+.wp-sysmaster-opcache-memory,
+.wp-sysmaster-opcache-statistics,
+.wp-sysmaster-opcache-files {
+    margin-bottom: 30px;
+}
+
+.wp-sysmaster-opcache-status h2,
+.wp-sysmaster-opcache-memory h2,
+.wp-sysmaster-opcache-statistics h2,
+.wp-sysmaster-opcache-files h2 {
+    margin-bottom: 15px;
+}
+
+.status-enabled {
+    color: #46b450;
+    font-weight: bold;
+}
+
+.status-disabled {
+    color: #dc3232;
+    font-weight: bold;
+}
+
+.wp-sysmaster-opcache-files table {
+    table-layout: fixed;
+}
+
+.wp-sysmaster-opcache-files th:nth-child(1) {
+    width: 50%;
+}
+
+.wp-sysmaster-opcache-files th:nth-child(2),
+.wp-sysmaster-opcache-files th:nth-child(3),
+.wp-sysmaster-opcache-files th:nth-child(4) {
+    width: 16.66%;
+}
+
+.wp-sysmaster-opcache-files td {
+    word-break: break-all;
+}
+
+/* Form tìm kiếm và lọc */
+.wp-sysmaster-opcache-filters {
+    margin-top: 15px;
+}
+
+.wp-sysmaster-opcache-filters .tablenav {
+    margin: 15px 0;
+}
+
+.wp-sysmaster-opcache-filters select {
+    margin-right: 8px;
+    max-width: 300px;
+}
+
+.wp-sysmaster-opcache-filters .search-box {
+    margin: 0;
+}
+
+.wp-sysmaster-opcache-filters .search-box input[type="search"] {
+    margin-right: 4px;
+}
+
+/* Phân trang */
+.wp-sysmaster-opcache-filters .tablenav-pages {
+    float: right;
+    margin-top: 10px;
+}
+
+.wp-sysmaster-opcache-filters .tablenav-pages .pagination-links {
+    margin-left: 10px;
+}
+
+.wp-sysmaster-opcache-filters .tablenav-pages a,
+.wp-sysmaster-opcache-filters .tablenav-pages span {
+    display: inline-block;
+    min-width: 30px;
+    height: 30px;
+    margin: 0 4px;
+    padding: 0 4px;
+    font-size: 16px;
+    line-height: 1.7;
+    text-align: center;
+    text-decoration: none;
+    color: #0073aa;
+    background: #f7f7f7;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 #ccc;
+}
+
+.wp-sysmaster-opcache-filters .tablenav-pages span.current {
+    color: #000;
+    background: #fff;
+    border-color: #999;
+}
+
+.wp-sysmaster-opcache-filters .tablenav-pages a:hover,
+.wp-sysmaster-opcache-filters .tablenav-pages a:focus {
+    color: #0073aa;
+    background: #fff;
+    border-color: #999;
+}
+
+/* Responsive */
+@media screen and (max-width: 782px) {
+    .wp-sysmaster-opcache-filters .alignleft,
+    .wp-sysmaster-opcache-filters .alignright,
+    .wp-sysmaster-opcache-filters .tablenav-pages {
+        float: none;
+        margin-bottom: 15px;
+    }
+
+    .wp-sysmaster-opcache-filters select {
+        display: block;
+        margin: 0 0 10px;
+        max-width: 100%;
+    }
+
+    .wp-sysmaster-opcache-files th:nth-child(3),
+    .wp-sysmaster-opcache-files th:nth-child(4),
+    .wp-sysmaster-opcache-files td:nth-child(3),
+    .wp-sysmaster-opcache-files td:nth-child(4) {
+        display: none;
+    }
+
+    .wp-sysmaster-opcache-files th:nth-child(1) {
+        width: 70%;
+    }
+
+    .wp-sysmaster-opcache-files th:nth-child(2) {
+        width: 30%;
+    }
+} 
