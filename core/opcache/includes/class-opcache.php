@@ -1,15 +1,22 @@
 <?php
 /**
  * Class chính cho module OPcache
+ * Main class for OPcache module
  */
 class WP_SysMaster_OPcache {
     /**
      * Instance của class
+     * Instance of the class
+     * @var WP_SysMaster_OPcache|null
+     * @access private
+     * @static
      */
     private static $instance = null;
 
     /**
      * Constructor
+     * @access private
+     * @return void
      */
     private function __construct() {
         $this->init_hooks();
@@ -17,8 +24,12 @@ class WP_SysMaster_OPcache {
 
     /**
      * Lấy instance của class
+     * Get class instance
+     * @access public
+     * @static
+     * @return WP_SysMaster_OPcache|null
      */
-    public static function get_instance() {
+    public static function get_instance(): WP_SysMaster_OPcache|null {
         if (null === self::$instance) {
             self::$instance = new self();
         }
@@ -27,16 +38,21 @@ class WP_SysMaster_OPcache {
 
     /**
      * Khởi tạo hooks
+     * Initialize hooks
+     * @access private
+     * @return void
      */
-    private function init_hooks() {
+    private function init_hooks(): void {
         add_action('admin_post_wp_sysmaster_flush_opcache', array($this, 'flush_opcache'));
         add_action('wp_ajax_wp_sysmaster_flush_opcache', array($this, 'ajax_flush_opcache'));
     }
 
     /**
      * Flush OPcache
+     * @access public
+     * @return void
      */
-    public function flush_opcache() {
+    public function flush_opcache(): void {
         if (!current_user_can('manage_options')) {
             wp_die(__('You do not have permission to perform this action.', 'wp-sysmaster'));
         }
@@ -64,8 +80,10 @@ class WP_SysMaster_OPcache {
 
     /**
      * Ajax flush OPcache
+     * @access public
+     * @return void
      */
-    public function ajax_flush_opcache() {
+    public function ajax_flush_opcache(): void {
         if (!current_user_can('manage_options')) {
             wp_send_json_error(array(
                 'message' => __('You do not have permission to perform this action.', 'wp-sysmaster')

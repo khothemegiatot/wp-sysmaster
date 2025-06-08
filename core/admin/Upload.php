@@ -5,21 +5,30 @@ if (!defined('ABSPATH')) exit;
 
 /**
  * Class xử lý Upload
+ * Class to manage upload settings
  */
 class Upload {
     /**
      * Instance của class
-     * @var Upload
+     * Instance of the class
+     * @var Upload|null
+     * @access private
+     * @static
      */
     private static $instance = null;
 
     /**
      * Option name cho Upload settings
+     * Option name for upload settings
+     * @var string
+     * @access private
      */
     const OPTION_NAME = 'wp_sysmaster_upload_settings';
 
     /**
      * Constructor
+     * @access private
+     * @return void
      */
     private function __construct() {
         add_action('admin_init', [$this, 'registerSettings']);
@@ -29,8 +38,12 @@ class Upload {
 
     /**
      * Lấy instance của class
+     * Get class instance
+     * @access public
+     * @static
+     * @return Upload|null
      */
-    public static function getInstance() {
+    public static function getInstance(): Upload|null {
         if (null === self::$instance) {
             self::$instance = new self();
         }
@@ -39,8 +52,11 @@ class Upload {
 
     /**
      * Đăng ký settings
+     * Register settings
+     * @access public
+     * @return void
      */
-    public function registerSettings() {
+    public function registerSettings(): void {
         register_setting(
             'wp_sysmaster_upload_settings',
             self::OPTION_NAME,
@@ -50,8 +66,12 @@ class Upload {
 
     /**
      * Sanitize settings trước khi lưu
+     * Sanitize settings before saving
+     * @access public
+     * @param array $input
+     * @return array
      */
-    public function sanitizeSettings($input) {
+    public function sanitizeSettings($input): array {
         $sanitized = [];
 
         // Enabled
@@ -78,8 +98,12 @@ class Upload {
 
     /**
      * Thêm custom MIME types
+     * Add custom MIME types
+     * @access public
+     * @param array $mimes
+     * @return array
      */
-    public function customUploadMimes($mimes) {
+    public function customUploadMimes($mimes): mixed {
         $settings = $this->getSettings();
         
         if ($settings['enabled'] !== 'on') {
@@ -97,8 +121,12 @@ class Upload {
 
     /**
      * Xử lý file upload
+     * Handle file upload
+     * @access public
+     * @param array $file
+     * @return array
      */
-    public function handleUpload($file) {
+    public function handleUpload($file): mixed {
         $settings = $this->getSettings();
         
         if ($settings['enabled'] !== 'on' || $settings['rename_files'] !== 'on') {
@@ -110,9 +138,11 @@ class Upload {
         $name = $info['filename'];
 
         // Tạo tên file mới
+        // Generate new file name
         $new_name = $this->generateFileName($name) . $ext;
         
         // Cập nhật tên file
+        // Update file name
         $file['name'] = $new_name;
 
         return $file;
@@ -120,8 +150,12 @@ class Upload {
 
     /**
      * Tạo tên file mới
+     * Generate new file name
+     * @access private
+     * @param string $original_name
+     * @return string
      */
-    private function generateFileName($original_name) {
+    private function generateFileName($original_name): string {
         // Format: timestamp-random-originalname
         $timestamp = time();
         $random = wp_generate_password(8, false);
@@ -132,16 +166,15 @@ class Upload {
 
     /**
      * Lấy settings
+     * Get settings
+     * @access public
+     * @return array
      */
-    public function getSettings() {
+    public function getSettings(): mixed {
         $defaults = [
             'enabled' => 'off',
             'rename_files' => 'off',
             'mime_types' => [
-                ['extension' => 'doc', 'type' => 'application/msword'],
-                ['extension' => 'docx', 'type' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
-                ['extension' => 'pdf', 'type' => 'application/pdf'],
-                ['extension' => 'zip', 'type' => 'application/zip']
             ]
         ];
 
@@ -151,8 +184,12 @@ class Upload {
 
     /**
      * Kiểm tra MIME type có hợp lệ không
+     * Check if MIME type is valid
+     * @access public
+     * @param string $mime_type
+     * @return bool
      */
-    public function isValidMimeType($mime_type) {
+    public function isValidMimeType($mime_type): bool {
         return preg_match('/^[a-z0-9\-\.\/\+]+$/i', $mime_type);
     }
-} 
+}

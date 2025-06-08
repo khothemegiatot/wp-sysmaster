@@ -5,21 +5,30 @@ if (!defined('ABSPATH')) exit;
 
 /**
  * Class xử lý SMTP
+ * Class to manage SMTP settings
  */
 class SMTP {
     /**
      * Instance của class
-     * @var SMTP
+     * Instance of the class
+     * @var SMTP|null
+     * @access private
+     * @static
      */
     private static $instance = null;
 
     /**
      * Option name cho SMTP settings
+     * Option name for SMTP settings
+     * @var string
+     * @access private
      */
     const OPTION_NAME = 'wp_sysmaster_smtp_settings';
 
     /**
      * Constructor
+     * @access private
+     * @return void
      */
     private function __construct() {
         add_action('admin_init', [$this, 'registerSettings']);
@@ -29,8 +38,12 @@ class SMTP {
 
     /**
      * Lấy instance của class
+     * Get class instance
+     * @access public
+     * @static
+     * @return SMTP|null
      */
-    public static function getInstance() {
+    public static function getInstance(): SMTP|null {
         if (null === self::$instance) {
             self::$instance = new self();
         }
@@ -39,8 +52,11 @@ class SMTP {
 
     /**
      * Đăng ký settings
+     * Register settings
+     * @access public
+     * @return void
      */
-    public function registerSettings() {
+    public function registerSettings(): void {
         register_setting(
             'wp_sysmaster_smtp_settings',
             self::OPTION_NAME,
@@ -50,8 +66,12 @@ class SMTP {
 
     /**
      * Sanitize settings trước khi lưu
+     * Sanitize settings before saving
+     * @access public
+     * @param array $input
+     * @return array
      */
-    public function sanitizeSettings($input) {
+    public function sanitizeSettings($input): array {
         $sanitized = [];
 
         // Enabled
@@ -91,8 +111,12 @@ class SMTP {
 
     /**
      * Mã hóa password
+     * Encrypt password
+     * @access private
+     * @param string $password
+     * @return string
      */
-    private function encryptPassword($password) {
+    private function encryptPassword($password): string {
         if (function_exists('sodium_crypto_secretbox')) {
             $key = substr(wp_salt('auth'), 0, SODIUM_CRYPTO_SECRETBOX_KEYBYTES);
             $nonce = random_bytes(SODIUM_CRYPTO_SECRETBOX_NONCEBYTES);
@@ -104,8 +128,12 @@ class SMTP {
 
     /**
      * Giải mã password
+     * Decrypt password
+     * @access private
+     * @param string $encrypted
+     * @return string
      */
-    private function decryptPassword($encrypted) {
+    private function decryptPassword($encrypted): string {
         if (empty($encrypted)) return '';
         
         if (function_exists('sodium_crypto_secretbox')) {
@@ -129,8 +157,12 @@ class SMTP {
 
     /**
      * Configure SMTP cho PHPMailer
+     * Configure SMTP for PHPMailer
+     * @access public
+     * @param PHPMailer $phpmailer
+     * @return void
      */
-    public function configureSMTP($phpmailer) {
+    public function configureSMTP($phpmailer): void {
         $settings = get_option(self::OPTION_NAME, []);
 
         // Kiểm tra xem SMTP có được bật không
@@ -171,8 +203,11 @@ class SMTP {
 
     /**
      * Xử lý AJAX test email
+     * Handle AJAX test email
+     * @access public
+     * @return void
      */
-    public function handleTestEmail() {
+    public function handleTestEmail(): void {
         // Verify nonce
         if (!check_ajax_referer('wp_sysmaster_test_smtp', 'nonce', false)) {
             wp_send_json_error(__('Invalid security token.', 'wp-sysmaster'));
@@ -219,8 +254,11 @@ class SMTP {
 
     /**
      * Lấy settings
+     * Get settings
+     * @access public
+     * @return array
      */
-    public function getSettings() {
+    public function getSettings(): array {
         return get_option(self::OPTION_NAME, []);
     }
 }

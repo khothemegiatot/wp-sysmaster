@@ -1,12 +1,16 @@
 <?php
 /**
  * Class xử lý thống kê OPcache
+ * Class to manage OPcache statistics
  */
 class WP_SysMaster_OPcache_Statistics {
     /**
      * Lấy thông tin thống kê OPcache
+     * Get OPcache statistics
+     * @access public
+     * @return array|bool
      */
-    public static function get_statistics() {
+    public static function get_statistics(): array|bool {
         if (!function_exists('opcache_get_status')) {
             return false;
         }
@@ -27,8 +31,15 @@ class WP_SysMaster_OPcache_Statistics {
 
     /**
      * Lấy danh sách files đã cache với phân trang và tìm kiếm
+     * Get paginated list of cached files with search and filter
+     * @access public
+     * @param int $page
+     * @param int $per_page
+     * @param string $search
+     * @param string $directory
+     * @return array
      */
-    public static function get_cached_files_paginated($page = 1, $per_page = 20, $search = '', $directory = '') {
+    public static function get_cached_files_paginated($page = 1, $per_page = 20, $search = '', $directory = ''): array {
         if (!function_exists('opcache_get_status')) {
             return array(
                 'items' => array(),
@@ -106,8 +117,11 @@ class WP_SysMaster_OPcache_Statistics {
 
     /**
      * Format bytes thành dạng dễ đọc
+     * @access public
+     * @param int $bytes
+     * @return string
      */
-    public static function format_bytes($bytes) {
+    public static function format_bytes($bytes): string {
         $units = array('B', 'KB', 'MB', 'GB', 'TB');
         $bytes = max($bytes, 0);
         $pow = floor(($bytes ? log($bytes) : 0) / log(1024));
@@ -118,8 +132,11 @@ class WP_SysMaster_OPcache_Statistics {
 
     /**
      * Format số thành phần trăm
+     * @access public
+     * @param float $number
+     * @return string
      */
-    public static function format_percentage($number) {
+    public static function format_percentage($number): string {
         return round($number, 2) . '%';
     }
 } 

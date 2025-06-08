@@ -6,7 +6,7 @@ $active_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'php';
 ?>
 
 <div class="wrap">
-    <h1><?php _e('Chèn mã', 'wp-sysmaster'); ?></h1>
+    <h1><?php _e('Insert Code', 'wp-sysmaster'); ?></h1>
 
     <h2 class="nav-tab-wrapper">
         <a href="?page=wp-sysmaster-code-injection&tab=php" class="nav-tab <?php echo $active_tab == 'php' ? 'nav-tab-active' : ''; ?>">
@@ -35,7 +35,7 @@ $active_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'php';
             <div class="wp-sysmaster-card">
                 <h2><?php _e('PHP Code', 'wp-sysmaster'); ?></h2>
                 <p class="description">
-                    <?php _e('Mã PHP sẽ được thực thi. Không cần thẻ <?php ?>.', 'wp-sysmaster'); ?>
+                    <?php _e('PHP code will be executed. No need to use <?php ?> tags.', 'wp-sysmaster'); ?>
                 </p>
                 <div class="php-code-editor">
                     <div class="editor-actions">
@@ -73,7 +73,7 @@ $active_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'php';
                         <button type="button" 
                                 class="button button-secondary" 
                                 id="test_php_code">
-                            <?php _e('Kiểm tra mã PHP', 'wp-sysmaster'); ?>
+                            <?php _e('Test PHP Code', 'wp-sysmaster'); ?>
                         </button>
                     </div>
                     <textarea name="wp_sysmaster_code_settings[php_code]" 
@@ -91,7 +91,7 @@ $active_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'php';
             <div class="wp-sysmaster-card">
                 <h2><?php _e('Header Scripts', 'wp-sysmaster'); ?></h2>
                 <p class="description">
-                    <?php _e('Các đoạn mã sẽ được chèn vào thẻ <head> của website.', 'wp-sysmaster'); ?>
+                    <?php _e('The code will be inserted into the <head> tag of the website.', 'wp-sysmaster'); ?>
                 </p>
                 <textarea name="wp_sysmaster_code_settings[header_scripts]" 
                           rows="15" 
@@ -106,7 +106,7 @@ $active_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'php';
             <div class="wp-sysmaster-card">
                 <h2><?php _e('Body Scripts (After <body>)', 'wp-sysmaster'); ?></h2>
                 <p class="description">
-                    <?php _e('Các đoạn mã sẽ được chèn ngay sau thẻ mở <body>.', 'wp-sysmaster'); ?>
+                    <?php _e('The code will be inserted after the opening <body> tag.', 'wp-sysmaster'); ?>
                 </p>
                 <textarea name="wp_sysmaster_code_settings[body_scripts]" 
                           rows="15" 
@@ -121,7 +121,7 @@ $active_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'php';
             <div class="wp-sysmaster-card">
                 <h2><?php _e('Footer Scripts', 'wp-sysmaster'); ?></h2>
                 <p class="description">
-                    <?php _e('Các đoạn mã sẽ được chèn trước thẻ đóng </body>.', 'wp-sysmaster'); ?>
+                    <?php _e('The code will be inserted before the closing </body> tag.', 'wp-sysmaster'); ?>
                 </p>
                 <textarea name="wp_sysmaster_code_settings[footer_scripts]" 
                           rows="15" 
@@ -136,7 +136,7 @@ $active_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'php';
             <div class="wp-sysmaster-card">
                 <h2><?php _e('Custom CSS', 'wp-sysmaster'); ?></h2>
                 <p class="description">
-                    <?php _e('CSS tùy chỉnh sẽ được chèn vào thẻ <head>.', 'wp-sysmaster'); ?>
+                    <?php _e('Custom CSS will be inserted into the <head> tag.', 'wp-sysmaster'); ?>
                 </p>
                 <textarea name="wp_sysmaster_code_settings[custom_css]" 
                           rows="15" 
@@ -148,7 +148,7 @@ $active_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'php';
             <?php endif; ?>
         </div>
 
-        <?php submit_button(__('Lưu thay đổi', 'wp-sysmaster')); ?>
+        <?php submit_button(__('Save Changes', 'wp-sysmaster')); ?>
     </form>
 </div>
 

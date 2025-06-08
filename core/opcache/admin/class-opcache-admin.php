@@ -1,10 +1,13 @@
 <?php
 /**
  * Class quản lý giao diện admin cho OPcache
+ * Class to manage admin interface for OPcache
  */
 class WP_SysMaster_OPcache_Admin {
     /**
      * Constructor
+     * @access public
+     * @return void
      */
     public function __construct() {
         $this->init_hooks();
@@ -12,8 +15,11 @@ class WP_SysMaster_OPcache_Admin {
 
     /**
      * Khởi tạo hooks
+     * Initialize hooks
+     * @access private
+     * @return void
      */
-    private function init_hooks() {
+    private function init_hooks(): void {
         add_action('admin_menu', array($this, 'add_admin_menu'));
         add_action('admin_enqueue_scripts', array($this, 'enqueue_scripts'));
     }
@@ -34,8 +40,12 @@ class WP_SysMaster_OPcache_Admin {
 
     /**
      * Enqueue scripts và styles
+     * Enqueue scripts and styles
+     * @access public
+     * @param string $hook
+     * @return void
      */
-    public function enqueue_scripts($hook) {
+    public function enqueue_scripts($hook): void {
         if ('wp-sysmaster_page_wp-sysmaster-opcache' !== $hook) {
             return;
         }
@@ -68,8 +78,11 @@ class WP_SysMaster_OPcache_Admin {
 
     /**
      * Render trang admin
+     * Render admin page
+     * @access public
+     * @return void
      */
-    public function render_admin_page() {
+    public function render_admin_page(): void {
         $statistics = WP_SysMaster_OPcache_Statistics::get_statistics();
         
         // Lấy các tham số tìm kiếm và phân trang

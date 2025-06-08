@@ -5,16 +5,22 @@ if (!defined('ABSPATH')) exit;
 
 /**
  * Khởi tạo admin
+ * Initialize admin
  */
 class Init {
     /**
      * Instance của class
-     * @var Init
+     * Instance of the class
+     * @var Init|null
+     * @access private
+     * @static
      */
     private static $instance = null;
 
     /**
      * Constructor
+     * @access private
+     * @return void
      */
     private function __construct() {
         $this->loadDependencies();
@@ -23,8 +29,12 @@ class Init {
 
     /**
      * Lấy instance của class
+     * Get class instance
+     * @access public
+     * @static
+     * @return Init|null
      */
-    public static function getInstance() {
+    public static function getInstance(): Init|null {
         if (null === self::$instance) {
             self::$instance = new self();
         }
@@ -33,8 +43,11 @@ class Init {
 
     /**
      * Load các dependencies
+     * Load dependencies
+     * @access private
+     * @return void
      */
-    private function loadDependencies() {
+    private function loadDependencies(): void {
         // Load Menu class
         require_once WP_SYSMASTER_PLUGIN_DIR . 'core/admin/Menu.php';
         Menu::getInstance();
@@ -54,8 +67,11 @@ class Init {
 
     /**
      * Khởi tạo hooks
+     * Initialize hooks
+     * @access private
+     * @return void
      */
-    private function initializeHooks() {
+    private function initializeHooks(): void {
         // Enqueue admin scripts và styles
         add_action('admin_enqueue_scripts', [$this, 'enqueueAssets']);
 
@@ -65,8 +81,11 @@ class Init {
 
     /**
      * Đăng ký settings
+     * Register settings
+     * @access public
+     * @return void
      */
-    public function registerSettings() {
+    public function registerSettings(): void {
         register_setting(
             'wp_sysmaster_ai_settings',
             WP_SYSMASTER_AI_OPTIONS_KEY,
@@ -79,8 +98,11 @@ class Init {
 
     /**
      * Sanitize AI settings
+     * @access public
+     * @param array $input
+     * @return array
      */
-    public function sanitizeAISettings($input) {
+    public function sanitizeAISettings($input): array {
         $sanitized = [];
 
         if (isset($input['openai_api_key'])) {
@@ -104,8 +126,12 @@ class Init {
 
     /**
      * Enqueue admin scripts và styles
+     * Enqueue admin scripts and styles
+     * @access public
+     * @param string $hook
+     * @return void
      */
-    public function enqueueAssets($hook) {
+    public function enqueueAssets($hook): void {
         // Chỉ load trên các trang của plugin
         if (strpos($hook, 'wp-sysmaster') === false) {
             return;
