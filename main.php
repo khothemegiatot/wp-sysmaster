@@ -89,14 +89,11 @@ class WP_SysMaster {
      * @return void
      */
     private function loadDependencies(): void {
-        // Load Common module
-        require_once WP_SYSMASTER_PLUGIN_DIR . 'core/common/init.php';
+        // Load core
+        require_once WP_SYSMASTER_PLUGIN_DIR . 'core/init.php';
 
         // Load OPcache module
         require_once WP_SYSMASTER_PLUGIN_DIR . 'core/opcache/init.php';
-
-        // Load Custom Code module
-        require_once WP_SYSMASTER_PLUGIN_DIR . 'core/custom-code/init.php';
 
         // Load AI module
         require_once WP_SYSMASTER_PLUGIN_DIR . 'core/ai/settings/init.php';

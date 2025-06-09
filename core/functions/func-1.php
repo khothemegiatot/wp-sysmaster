@@ -1,9 +1,6 @@
 <?php
 
 if ( !defined( 'ABSPATH' ) ) exit;
-
-use WPSysMaster\Admin\SMTP;
-
 /**
  * Rename uploaded file
  * @param array $file
@@ -22,16 +19,6 @@ function wp_sysmaster_000__rename_uploaded_file( $file ) {
     $file['url'] = $upload_dir['url'] . '/' . $new_file_name;
 
     return $file;
-}
-
-/**
- * Custom upload mimes
- * @param array $mimes
- * @return array
- */
- function wp_sysmaster_000__custom_upload_mimes( $mimes ) {
-    $mimes['apk'] = 'application/vnd.android.package-archive';
-    return $mimes;
 }
 
 

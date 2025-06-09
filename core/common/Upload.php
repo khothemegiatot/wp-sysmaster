@@ -1,5 +1,8 @@
 <?php
-namespace WPSysMaster\Common;
+namespace WPSysMaster\Core\Common;
+
+require_once WP_SYSMASTER_PLUGIN_DIR . 'core/abstracts/core-abstract.php';
+use WPSysMaster\Core\Abstracts\CoreAbstract;
 
 if (!defined('ABSPATH')) exit;
 
@@ -7,7 +10,7 @@ if (!defined('ABSPATH')) exit;
  * Class xử lý Upload
  * Class to manage upload settings
  */
-class Upload {
+class Upload extends CoreAbstract {
     /**
      * Instance của class
      * Instance of the class
@@ -30,8 +33,25 @@ class Upload {
      * @access private
      * @return void
      */
-    private function __construct() {
+    protected function __construct() {
+        $this->initHooks();
+    }
+
+    protected function initHooks(): void {
         add_action('admin_init', [$this, 'registerSettings']);
+
+        // Upload Settings
+        add_action('admin_menu', function(){
+            add_submenu_page(
+                'wp-sysmaster',
+                __('Upload Settings', 'wp-sysmaster'),
+                __('Upload', 'wp-sysmaster'),
+                'manage_options',
+                'wp-sysmaster-upload',
+                [$this, 'renderView']
+            );
+        });
+
         add_filter('upload_mimes', [$this, 'customUploadMimes']);
         add_filter('wp_handle_upload_prefilter', [$this, 'handleUpload']);
     }
@@ -94,6 +114,20 @@ class Upload {
         }
 
         return $sanitized;
+    }
+
+    /**
+     * Render trang Upload
+     * Render upload page
+     * @access public
+     * @return void
+     */
+    public function renderView(): void {
+        if (!wp_sysmaster_is_admin()) {
+            wp_die(__('You do not have sufficient permissions to access this page.', 'wp-sysmaster'));
+        }
+
+        wp_sysmaster_get_template('common/upload.php');
     }
 
     /**

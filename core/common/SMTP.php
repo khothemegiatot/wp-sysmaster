@@ -1,5 +1,8 @@
 <?php
-namespace WPSysMaster\Common;
+namespace WPSysMaster\Core\Common;
+
+require_once WP_SYSMASTER_PLUGIN_DIR . 'core/abstracts/core-abstract.php';
+use WPSysMaster\Core\Abstracts\CoreAbstract;
 
 if (!defined('ABSPATH')) exit;
 
@@ -7,7 +10,7 @@ if (!defined('ABSPATH')) exit;
  * Class xử lý SMTP
  * Class to manage SMTP settings
  */
-class SMTP {
+class SMTP extends CoreAbstract {
     /**
      * Instance của class
      * Instance of the class
@@ -30,8 +33,24 @@ class SMTP {
      * @access private
      * @return void
      */
-    private function __construct() {
+    protected function __construct() {
+        $this->initHooks();
+    }
+
+    protected function initHooks(): void {
         add_action('admin_init', [$this, 'registerSettings']);
+
+        add_action('admin_menu', function(){
+            add_submenu_page(
+                'wp-sysmaster',
+                __('SMTP', 'wp-sysmaster'),
+                __('SMTP', 'wp-sysmaster'),
+                'manage_options',
+                'wp-sysmaster-smtp',
+                [$this, 'renderView']
+            );
+        });
+
         add_action('wp_ajax_wp_sysmaster_test_smtp', [$this, 'handleTestEmail']);
         add_action('phpmailer_init', [$this, 'configureSMTP']);
     }
@@ -107,6 +126,20 @@ class SMTP {
         $sanitized['from_name'] = sanitize_text_field($input['from_name'] ?? get_option('blogname'));
 
         return $sanitized;
+    }
+
+    /**
+     * Render trang SMTP
+     * Render SMTP page
+     * @access public
+     * @return void
+     */
+    public function renderView(): void {
+        if (!wp_sysmaster_is_admin()) {
+            wp_die(__('You do not have sufficient permissions to access this page.', 'wp-sysmaster'));
+        }
+
+        wp_sysmaster_get_template('common/smtp.php');
     }
 
     /**

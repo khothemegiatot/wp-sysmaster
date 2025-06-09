@@ -39,42 +39,58 @@ $active_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'php';
                 </p>
                 <div class="php-code-editor">
                     <div class="editor-actions">
-                        <select name="wp_sysmaster_code_settings[php_code_type]" class="code-type">
-                            <option value="action" <?php selected($code_settings['php_code_type'] ?? 'action', 'action'); ?>>
-                                <?php _e('Action Hook', 'wp-sysmaster'); ?>
-                            </option>
-                            <option value="function" <?php selected($code_settings['php_code_type'] ?? 'action', 'function'); ?>>
-                                <?php _e('Function', 'wp-sysmaster'); ?>
-                            </option>
-                            <option value="shortcode" <?php selected($code_settings['php_code_type'] ?? 'action', 'shortcode'); ?>>
-                                <?php _e('Shortcode', 'wp-sysmaster'); ?>
-                            </option>
-                        </select>
                         <select name="wp_sysmaster_code_settings[php_code_hook]" class="code-hook">
-                            <option value="init" <?php selected($code_settings['php_code_hook'] ?? 'init', 'init'); ?>>
-                                init
-                            </option>
-                            <option value="wp_head" <?php selected($code_settings['php_code_hook'] ?? 'init', 'wp_head'); ?>>
-                                wp_head
-                            </option>
-                            <option value="wp_footer" <?php selected($code_settings['php_code_hook'] ?? 'init', 'wp_footer'); ?>>
-                                wp_footer
-                            </option>
-                            <option value="admin_init" <?php selected($code_settings['php_code_hook'] ?? 'init', 'admin_init'); ?>>
-                                admin_init
-                            </option>
-                            <option value="admin_head" <?php selected($code_settings['php_code_hook'] ?? 'init', 'admin_head'); ?>>
-                                admin_head
-                            </option>
-                            <option value="admin_footer" <?php selected($code_settings['php_code_hook'] ?? 'init', 'admin_footer'); ?>>
-                                admin_footer
-                            </option>
+                            <optgroup label="<?php _e('Plugin Hooks', 'wp-sysmaster'); ?>">
+                                <option value="plugins_loaded" <?php selected($code_settings['php_code_hook'] ?? 'init', 'plugins_loaded'); ?>>
+                                    plugins_loaded (<?php _e('Earliest hook', 'wp-sysmaster'); ?>)
+                                </option>
+                                <option value="init" <?php selected($code_settings['php_code_hook'] ?? 'init', 'init'); ?>>
+                                    init (<?php _e('Basic WordPress loaded', 'wp-sysmaster'); ?>)
+                                </option>
+                            </optgroup>
+
+                            <optgroup label="<?php _e('Frontend Hooks', 'wp-sysmaster'); ?>">
+                                <option value="wp" <?php selected($code_settings['php_code_hook'] ?? 'init', 'wp'); ?>>
+                                    wp (<?php _e('Main WordPress loaded', 'wp-sysmaster'); ?>)
+                                </option>
+                                <option value="wp_head" <?php selected($code_settings['php_code_hook'] ?? 'init', 'wp_head'); ?>>
+                                    wp_head
+                                </option>
+                                <option value="wp_footer" <?php selected($code_settings['php_code_hook'] ?? 'init', 'wp_footer'); ?>>
+                                    wp_footer
+                                </option>
+                                <option value="template_redirect" <?php selected($code_settings['php_code_hook'] ?? 'init', 'template_redirect'); ?>>
+                                    template_redirect
+                                </option>
+                            </optgroup>
+
+                            <optgroup label="<?php _e('Admin Hooks', 'wp-sysmaster'); ?>">
+                                <option value="admin_init" <?php selected($code_settings['php_code_hook'] ?? 'init', 'admin_init'); ?>>
+                                    admin_init
+                                </option>
+                                <option value="admin_menu" <?php selected($code_settings['php_code_hook'] ?? 'init', 'admin_menu'); ?>>
+                                    admin_menu
+                                </option>
+                                <option value="admin_head" <?php selected($code_settings['php_code_hook'] ?? 'init', 'admin_head'); ?>>
+                                    admin_head
+                                </option>
+                                <option value="admin_footer" <?php selected($code_settings['php_code_hook'] ?? 'init', 'admin_footer'); ?>>
+                                    admin_footer
+                                </option>
+                            </optgroup>
+
+                            <optgroup label="<?php _e('Content Hooks', 'wp-sysmaster'); ?>">
+                                <option value="the_content" <?php selected($code_settings['php_code_hook'] ?? 'init', 'the_content'); ?>>
+                                    the_content
+                                </option>
+                                <option value="the_title" <?php selected($code_settings['php_code_hook'] ?? 'init', 'the_title'); ?>>
+                                    the_title
+                                </option>
+                                <option value="pre_get_posts" <?php selected($code_settings['php_code_hook'] ?? 'init', 'pre_get_posts'); ?>>
+                                    pre_get_posts
+                                </option>
+                            </optgroup>
                         </select>
-                        <button type="button" 
-                                class="button button-secondary" 
-                                id="test_php_code">
-                            <?php _e('Test PHP Code', 'wp-sysmaster'); ?>
-                        </button>
                     </div>
                     <textarea name="wp_sysmaster_code_settings[php_code]" 
                               rows="15" 
@@ -83,7 +99,6 @@ $active_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'php';
                         echo esc_textarea($code_settings['php_code'] ?? ''); 
                     ?></textarea>
                 </div>
-                <div id="php_code_result"></div>
             </div>
 
             <?php elseif ($active_tab == 'header'): ?>
@@ -177,42 +192,7 @@ $active_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'php';
 }
 
 .php-code-editor .editor-actions select {
-    margin-right: 10px;
-}
-
-.code-type {
-    min-width: 120px;
-}
-
-.code-hook {
-    min-width: 150px;
-}
-
-#php_code_result {
-    margin-top: 10px;
-    padding: 10px;
-    display: none;
-}
-
-#php_code_result.success {
-    background: #dff0d8;
-    border: 1px solid #d6e9c6;
-    color: #3c763d;
-}
-
-#php_code_result.error {
-    background: #f2dede;
-    border: 1px solid #ebccd1;
-    color: #a94442;
-    white-space: pre-wrap;
-}
-
-.code-hook {
-    display: none;
-}
-
-.code-type[value="action"] ~ .code-hook {
-    display: inline-block;
+    min-width: 200px;
 }
 
 /* Tab styles */
@@ -228,65 +208,4 @@ $active_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'php';
     background: #fff;
     border-bottom: 1px solid #fff;
 }
-</style>
-
-<script>
-jQuery(document).ready(function($) {
-    // Hiển thị/ẩn dropdown hook dựa vào loại code
-    $('select[name="wp_sysmaster_code_settings[php_code_type]"]').on('change', function() {
-        if ($(this).val() === 'action') {
-            $('.code-hook').show();
-        } else {
-            $('.code-hook').hide();
-        }
-    }).trigger('change');
-
-    // Test PHP code
-    $('#test_php_code').on('click', function() {
-        var $button = $(this);
-        var $result = $('#php_code_result');
-        var phpCode = $('textarea[name="wp_sysmaster_code_settings[php_code]"]').val();
-        var type = $('select[name="wp_sysmaster_code_settings[php_code_type]"]').val();
-        var hook = $('select[name="wp_sysmaster_code_settings[php_code_hook]"]').val();
-        
-        if (!phpCode) {
-            alert('<?php _e('Please enter PHP code to test.', 'wp-sysmaster'); ?>');
-            return;
-        }
-        
-        $button.prop('disabled', true);
-        $result.removeClass('success error').hide();
-        
-        $.ajax({
-            url: ajaxurl,
-            type: 'POST',
-            data: {
-                action: 'wp_custom_codes_test_php',
-                code: phpCode,
-                type: type,
-                hook: hook,
-                nonce: '<?php echo wp_create_nonce('wp_custom_codes_test_php'); ?>'
-            },
-            success: function(response) {
-                if (response.success) {
-                    $result.addClass('success')
-                           .html(response.data)
-                           .show();
-                } else {
-                    $result.addClass('error')
-                           .html(response.data)
-                           .show();
-                }
-            },
-            error: function() {
-                $result.addClass('error')
-                       .html('<?php _e('An error occurred while testing the PHP code.', 'wp-sysmaster'); ?>')
-                       .show();
-            },
-            complete: function() {
-                $button.prop('disabled', false);
-            }
-        });
-    });
-});
-</script> 
+</style> 
