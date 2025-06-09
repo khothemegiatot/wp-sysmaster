@@ -1,5 +1,5 @@
 <?php
-namespace WPSysMaster\Admin;
+namespace WPSysMaster\Common;
 
 if (!defined('ABSPATH')) exit;
 
@@ -9,12 +9,17 @@ if (!defined('ABSPATH')) exit;
 class Menu {
     /**
      * Instance của class
-     * @var Menu
+     * Instance of the class
+     * @var Menu|null
+     * @access private
+     * @static
      */
     private static $instance = null;
 
     /**
      * Constructor
+     * @access private
+     * @return void
      */
     private function __construct() {
         add_action('admin_menu', [$this, 'registerMenus']);
@@ -22,8 +27,12 @@ class Menu {
 
     /**
      * Lấy instance của class
+     * Get class instance
+     * @access public
+     * @static
+     * @return Menu|null
      */
-    public static function getInstance() {
+    public static function getInstance(): Menu|null {
         if (null === self::$instance) {
             self::$instance = new self();
         }
@@ -32,8 +41,11 @@ class Menu {
 
     /**
      * Đăng ký các menu trong admin
+     * Register menus in admin
+     * @access public
+     * @return void
      */
-    public function registerMenus() {
+    public function registerMenus(): void {
         // Menu chính
         add_menu_page(
             __('WP SysMaster', 'wp-sysmaster'),
@@ -76,26 +88,6 @@ class Menu {
             [$this, 'renderSMTP']
         );
 
-        // Tối ưu
-        add_submenu_page(
-            'wp-sysmaster',
-            __('Tối ưu', 'wp-sysmaster'),
-            __('Tối ưu', 'wp-sysmaster'),
-            'manage_options',
-            'wp-sysmaster-optimization',
-            [$this, 'renderOptimization']
-        );
-
-        // Bảo mật
-        add_submenu_page(
-            'wp-sysmaster',
-            __('Bảo mật', 'wp-sysmaster'),
-            __('Bảo mật', 'wp-sysmaster'),
-            'manage_options',
-            'wp-sysmaster-security',
-            [$this, 'renderSecurity']
-        );
-
         // AI Settings
         add_submenu_page(
             'wp-sysmaster',
@@ -106,73 +98,46 @@ class Menu {
             [$this, 'renderAISettings']
         );
 
-        // Cài đặt
-        add_submenu_page(
-            'wp-sysmaster',
-            __('Cài đặt', 'wp-sysmaster'),
-            __('Cài đặt', 'wp-sysmaster'),
-            'manage_options',
-            'wp-sysmaster-settings',
-            [$this, 'renderSettings']
-        );
+        // // Cài đặt
+        // add_submenu_page(
+        //     'wp-sysmaster',
+        //     __('Cài đặt', 'wp-sysmaster'),
+        //     __('Cài đặt', 'wp-sysmaster'),
+        //     'manage_options',
+        //     'wp-sysmaster-settings',
+        //     [$this, 'renderSettings']
+        // );
     }
 
     /**
      * Render trang Dashboard
+     * Render dashboard page
+     * @access public
+     * @return void
      */
-    public function renderDashboard() {
+    public function renderDashboard(): void {
         if (!wp_sysmaster_is_admin()) {
             wp_die(__('You do not have sufficient permissions to access this page.', 'wp-sysmaster'));
         }
 
-        wp_sysmaster_get_template('admin/dashboard.php', [
+        wp_sysmaster_get_template('common/dashboard.php', [
             'ai_status' => $this->getAIStatus(),
             'recent_activity' => $this->getRecentActivity()
         ]);
     }
 
     /**
-     * Render trang Chèn mã
-     */
-    public function renderCodeInjection() {
-        if (!wp_sysmaster_is_admin()) {
-            wp_die(__('You do not have sufficient permissions to access this page.', 'wp-sysmaster'));
-        }
-
-        wp_sysmaster_get_template('admin/code-injection.php');
-    }
-
-    /**
      * Render trang SMTP
+     * Render SMTP page
+     * @access public
+     * @return void
      */
-    public function renderSMTP() {
+    public function renderSMTP(): void {
         if (!wp_sysmaster_is_admin()) {
             wp_die(__('You do not have sufficient permissions to access this page.', 'wp-sysmaster'));
         }
 
-        wp_sysmaster_get_template('admin/smtp.php');
-    }
-
-    /**
-     * Render trang Tối ưu
-     */
-    public function renderOptimization() {
-        if (!wp_sysmaster_is_admin()) {
-            wp_die(__('You do not have sufficient permissions to access this page.', 'wp-sysmaster'));
-        }
-
-        wp_sysmaster_get_template('admin/optimization.php');
-    }
-
-    /**
-     * Render trang Bảo mật
-     */
-    public function renderSecurity() {
-        if (!wp_sysmaster_is_admin()) {
-            wp_die(__('You do not have sufficient permissions to access this page.', 'wp-sysmaster'));
-        }
-
-        wp_sysmaster_get_template('admin/security.php');
+        wp_sysmaster_get_template('common/smtp.php');
     }
 
     /**
@@ -183,7 +148,7 @@ class Menu {
             wp_die(__('You do not have sufficient permissions to access this page.', 'wp-sysmaster'));
         }
 
-        wp_sysmaster_get_template('admin/ai-settings.php');
+        wp_sysmaster_get_template('common/ai-settings.php');
         // $ai_settings = new \WPSysMaster\AI\Settings\AISettingsPage();
         // $ai_settings->renderSettingsPage();
     }
@@ -196,18 +161,21 @@ class Menu {
             wp_die(__('You do not have sufficient permissions to access this page.', 'wp-sysmaster'));
         }
 
-        wp_sysmaster_get_template('admin/settings.php');
+        wp_sysmaster_get_template('common/settings.php');
     }
 
     /**
      * Render trang Upload
+     * Render upload page
+     * @access public
+     * @return void
      */
-    public function renderUpload() {
+    public function renderUpload(): void {
         if (!wp_sysmaster_is_admin()) {
             wp_die(__('You do not have sufficient permissions to access this page.', 'wp-sysmaster'));
         }
 
-        require_once WP_SYSMASTER_TEMPLATES_DIR . 'admin/upload.php';
+        wp_sysmaster_get_template('common/upload.php');
     }
 
     /**

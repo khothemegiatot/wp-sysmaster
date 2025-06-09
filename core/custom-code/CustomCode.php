@@ -1,9 +1,7 @@
 <?php
 namespace WPSysMaster\CustomCode;
 
-if (!defined('ABSPATH')) {
-    exit;
-}
+if (!defined('ABSPATH')) exit;
 
 /**
  * Class quản lý chèn mã tùy chỉnh
@@ -44,13 +42,15 @@ class CustomCode {
 
     /**
      * Render trang Chèn mã
+     * @access public
+     * @return void
      */
-    public function renderCodeInjection() {
+    public function renderCodeInjection(): void {
         if (!wp_sysmaster_is_admin()) {
             wp_die(__('You do not have sufficient permissions to access this page.', 'wp-sysmaster'));
         }
 
-        wp_sysmaster_get_template('admin/code-injection.php');
+        wp_sysmaster_get_template('common/code-insertion.php');
     }
 
     /**
@@ -82,8 +82,8 @@ class CustomCode {
                 // Chèn mã
                 add_submenu_page(
                     'wp-sysmaster',
-                    __('Chèn mã', 'wp-sysmaster'),
-                    __('Chèn mã', 'wp-sysmaster'),
+                    __('Insert code', 'wp-sysmaster'),
+                    __('Insert code', 'wp-sysmaster'),
                     'manage_options',
                     'wp-sysmaster-code-injection',
                     [$this, 'renderCodeInjection']
@@ -95,8 +95,10 @@ class CustomCode {
     /**
      * Đăng ký settings
      * Register settings
+     * @access public
+     * @return void
      */
-    public function register_settings() {
+    public function register_settings(): void {
         register_setting('wp_sysmaster_code_settings', 'wp_sysmaster_code_settings', array(
             'sanitize_callback' => array($this, 'sanitize_settings')
         ));
@@ -104,8 +106,11 @@ class CustomCode {
 
     /**
      * Sanitize settings
+     * @access private
+     * @param array $input
+     * @return array
      */
-    public function sanitize_settings($input) {
+    private function sanitize_settings($input): array {
         $output = array();
 
         if (isset($input['php_code'])) {
@@ -135,8 +140,11 @@ class CustomCode {
 
     /**
      * Sanitize scripts
+     * @access private
+     * @param string $content
+     * @return string
      */
-    private function sanitize_scripts($content) {
+    private function sanitize_scripts($content): string {
         return wp_kses($content, $this->get_allowed_html());
     }
 

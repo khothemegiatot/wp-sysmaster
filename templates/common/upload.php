@@ -1,7 +1,7 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-use WPSysMaster\Admin\Upload;
+use WPSysMaster\Common\Upload;
 
 $upload = Upload::getInstance();
 $settings = $upload->getSettings();

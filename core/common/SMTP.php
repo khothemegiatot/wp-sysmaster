@@ -1,5 +1,5 @@
 <?php
-namespace WPSysMaster\Admin;
+namespace WPSysMaster\Common;
 
 if (!defined('ABSPATH')) exit;
 

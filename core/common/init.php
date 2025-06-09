@@ -1,5 +1,5 @@
 <?php
-namespace WPSysMaster\Admin;
+namespace WPSysMaster\Common;
 
 if (!defined('ABSPATH')) exit;
 
@@ -49,20 +49,16 @@ class Init {
      */
     private function loadDependencies(): void {
         // Load Menu class
-        require_once WP_SYSMASTER_PLUGIN_DIR . 'core/admin/Menu.php';
+        require_once WP_SYSMASTER_PLUGIN_DIR . 'core/common/Menu.php';
         Menu::getInstance();
 
         // Load Upload class
-        require_once WP_SYSMASTER_PLUGIN_DIR . 'core/admin/Upload.php';
+        require_once WP_SYSMASTER_PLUGIN_DIR . 'core/common/Upload.php';
         Upload::getInstance();
 
         // Load SMTP class
-        require_once WP_SYSMASTER_PLUGIN_DIR . 'core/admin/SMTP.php';
+        require_once WP_SYSMASTER_PLUGIN_DIR . 'core/common/SMTP.php';
         SMTP::getInstance();
-
-        // // Load CustomCode class
-        // require_once WP_SYSMASTER_PLUGIN_DIR . 'core/admin/CustomCode.php';
-        // CustomCode::getInstance();
     }
 
     /**

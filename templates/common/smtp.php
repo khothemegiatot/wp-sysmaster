@@ -1,7 +1,7 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-use WPSysMaster\Admin\SMTP;
+use WPSysMaster\Common\SMTP;
 
 $smtp = SMTP::getInstance();
 $smtp_settings = $smtp->getSettings();
