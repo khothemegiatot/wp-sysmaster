@@ -1,0 +1,777 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WP SysMaster\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-13 06:28+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.8.0; wp-6.8.1; php-8.4.4\n"
+"X-Domain: wp-sysmaster"
+
+#: templates/opcache/opcache-dashboard.php:125
+#: core/opcache/admin/views/opcache-dashboard.php:125
+msgid "%d items/page"
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:169
+#: core/opcache/admin/views/opcache-dashboard.php:169
+#, php-format
+msgid "%s item"
+msgid_plural "%s items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: core/common/SMTP.php:262
+#, php-format
+msgid "[%s] SMTP Test Email"
+msgstr ""
+
+#: templates/common/upload.php:46
+msgid "Add MIME Type"
+msgstr ""
+
+#: templates/common/code-insertion.php:67
+msgid "Admin Hooks"
+msgstr ""
+
+#: core/ai/embeddings/EmbeddingHooks.php:85
+msgid "AI Embedding"
+msgstr ""
+
+#: templates/common/ai-settings.php:8
+msgid "AI Settings"
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:114
+#: core/opcache/admin/views/opcache-dashboard.php:114
+msgid "All Directories"
+msgstr ""
+
+#: templates/common/dashboard.php:78
+msgid "Always backup data before making major changes"
+msgstr ""
+
+#: core/opcache/admin/class-opcache-admin.php:74
+msgid "An error occurred while flushing OPcache."
+msgstr ""
+
+#: templates/common/smtp.php:248
+msgid "An error occurred while sending the test email."
+msgstr ""
+
+#: templates/common/settings.php:223
+msgid "An error occurred while verifying the license."
+msgstr ""
+
+#: core/ai/settings/AISettingsPage.php:162
+msgid "API Endpoint"
+msgstr ""
+
+#: templates/common/settings.php:54 core/ai/settings/AISettingsPage.php:101
+#: core/ai/settings/AISettingsPage.php:126
+msgid "API Key"
+msgstr ""
+
+#: templates/common/settings.php:41
+msgid "API Settings"
+msgstr ""
+
+#: core/opcache/admin/class-opcache-admin.php:72
+msgid "Are you sure you want to flush OPcache?"
+msgstr ""
+
+#: templates/common/smtp.php:81
+msgid "Authentication"
+msgstr ""
+
+#: templates/common/dashboard.php:50
+msgid "Author & Support"
+msgstr ""
+
+#: templates/common/upload.php:33
+msgid "Auto rename uploaded files"
+msgstr ""
+
+#: templates/common/code-insertion.php:48
+msgid "Basic WordPress loaded"
+msgstr ""
+
+#: templates/common/code-insertion.php:19
+msgid "Body Scripts"
+msgstr ""
+
+#: templates/common/code-insertion.php:122
+msgid "Body Scripts (After <body>)"
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:45
+#: core/opcache/admin/views/opcache-dashboard.php:45
+msgid "Cache Full"
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:105
+#: core/opcache/admin/views/opcache-dashboard.php:105
+msgid "Cached Files"
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:84
+#: core/opcache/admin/views/opcache-dashboard.php:84
+msgid "Cached Scripts"
+msgstr ""
+
+#: templates/common/dashboard.php:41
+msgid "Check and enhance security in the \"Security\" section"
+msgstr ""
+
+#: templates/common/dashboard.php:79
+msgid "Check compatibility with themes and other plugins"
+msgstr ""
+
+#: templates/common/dashboard.php:38
+msgid "Configure AI settings in the \"AI Settings\" section"
+msgstr ""
+
+#: templates/common/dashboard.php:37
+msgid "Configure basic settings in the \"Settings\" section"
+msgstr ""
+
+#: core/ai/settings/AISettingsPage.php:354
+msgid ""
+"Configure settings for content embeddings. These settings affect how your "
+"content is processed and stored for AI interactions."
+msgstr ""
+
+#: templates/common/dashboard.php:39
+msgid "Configure SMTP to ensure emails are sent"
+msgstr ""
+
+#: templates/common/dashboard.php:25
+msgid "Configure SMTP to send emails"
+msgstr ""
+
+#: core/ai/settings/AISettingsPage.php:329
+msgid ""
+"Configure your Google Gemini API settings. You can get your API key from the "
+"Google AI Studio."
+msgstr ""
+
+#: core/ai/settings/AISettingsPage.php:343
+msgid ""
+"Configure your Local Language Model settings. Make sure your LM server is "
+"running and accessible."
+msgstr ""
+
+#: core/ai/settings/AISettingsPage.php:315
+msgid ""
+"Configure your OpenAI API settings. You can get your API key from the OpenAI "
+"dashboard."
+msgstr ""
+
+#: core/ai/settings/AISettingsPage.php:232
+#, php-format
+msgid "Connection test failed: %s"
+msgstr ""
+
+#: core/ai/settings/AISettingsPage.php:225
+msgid "Connection test successful!"
+msgstr ""
+
+#: templates/common/dashboard.php:56
+msgid "Contact us:"
+msgstr ""
+
+#: templates/common/code-insertion.php:82
+msgid "Content Hooks"
+msgstr ""
+
+#: core/ai/embeddings/EmbeddingHooks.php:152
+msgid "Create Embeddings"
+msgstr ""
+
+#: templates/common/code-insertion.php:25
+#: templates/common/code-insertion.php:152
+msgid "Custom CSS"
+msgstr ""
+
+#: templates/common/code-insertion.php:154
+msgid "Custom CSS will be inserted into the <head> tag."
+msgstr ""
+
+#: templates/common/upload.php:44
+msgid "Custom MIME Types"
+msgstr ""
+
+#: templates/common/settings.php:8
+msgid "Cài đặt"
+msgstr ""
+
+#: templates/common/settings.php:16
+msgid "Cài đặt chung"
+msgstr ""
+
+#: core/init.php:24 core/init.php:25
+msgid "Dashboard"
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:40
+#: core/opcache/admin/views/opcache-dashboard.php:40
+msgid "Disabled"
+msgstr ""
+
+#: templates/common/code-insertion.php:45
+msgid "Earliest hook"
+msgstr ""
+
+#: templates/common/settings.php:83
+msgid "Email nhận thông báo"
+msgstr ""
+
+#: templates/common/settings.php:70
+msgid "Email Settings"
+msgstr ""
+
+#: core/ai/embeddings/EmbeddingHooks.php:106
+msgid "Embedding created"
+msgstr ""
+
+#: core/ai/settings/AISettingsPage.php:175
+msgid "Embedding Settings"
+msgstr ""
+
+#: templates/common/upload.php:25
+msgid "Enable custom upload features"
+msgstr ""
+
+#: templates/common/smtp.php:19
+msgid "Enable SMTP"
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:38
+#: core/opcache/admin/views/opcache-dashboard.php:38
+msgid "Enabled"
+msgstr ""
+
+#: templates/common/smtp.php:62
+msgid "Encryption"
+msgstr ""
+
+#: templates/common/dashboard.php:27
+msgid "Enhance website security"
+msgstr ""
+
+#: core/ai/settings/AISettingsPage.php:132
+msgid "Enter your Google Gemini API key"
+msgstr ""
+
+#: core/ai/settings/AISettingsPage.php:168
+msgid "Enter your Local LM API endpoint (e.g. http://localhost:8080)"
+msgstr ""
+
+#: core/ai/settings/AISettingsPage.php:435
+msgid "Enter your OpenAI API key. You can get one from"
+msgstr ""
+
+#: core/common/SMTP.php:283
+#, php-format
+msgid "Error sending email: %s"
+msgstr ""
+
+#: templates/common/smtp.php:56
+msgid "Example: 587 or 465"
+msgstr ""
+
+#: core/common/SMTP.php:279
+msgid "Failed to send test email. Please check your SMTP settings."
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:147
+#: core/opcache/admin/views/opcache-dashboard.php:147
+msgid "File"
+msgstr ""
+
+#: templates/common/upload.php:57 templates/common/upload.php:79
+msgid "File extension (e.g. pdf)"
+msgstr ""
+
+#: templates/common/upload.php:36
+msgid "Files will be renamed using format: timestamp-random-originalname"
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:130
+#: core/opcache/admin/views/opcache-dashboard.php:130
+msgid "Filter"
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:26
+#: core/opcache/admin/views/opcache-dashboard.php:26
+msgid "Flush OPcache"
+msgstr ""
+
+#: templates/common/code-insertion.php:22
+#: templates/common/code-insertion.php:137
+msgid "Footer Scripts"
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:65
+#: core/opcache/admin/views/opcache-dashboard.php:65
+msgid "Free"
+msgstr ""
+
+#: templates/common/smtp.php:109 templates/common/smtp.php:112
+msgid "From Email"
+msgstr ""
+
+#: templates/common/smtp.php:121
+msgid "From Name"
+msgstr ""
+
+#: templates/common/code-insertion.php:52
+msgid "Frontend Hooks"
+msgstr ""
+
+#: core/ai/settings/AISettingsPage.php:317
+#: core/ai/settings/AISettingsPage.php:331
+msgid "Get API Key"
+msgstr ""
+
+#: core/ai/settings/AISettingsPage.php:119
+msgid "Google Gemini Settings"
+msgstr ""
+
+#: templates/common/code-insertion.php:16
+#: templates/common/code-insertion.php:107
+msgid "Header Scripts"
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:96
+#: core/opcache/admin/views/opcache-dashboard.php:96
+msgid "Hit Rate"
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:88
+#: templates/opcache/opcache-dashboard.php:148
+#: core/opcache/admin/views/opcache-dashboard.php:88
+#: core/opcache/admin/views/opcache-dashboard.php:148
+msgid "Hits"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.phanxuanchanh.com, https://khothemegiatot.com"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://www.phanxuanchanh.com/wp-sysmaster"
+msgstr ""
+
+#: templates/common/dashboard.php:64
+msgid "If you find this plugin useful, please support us:"
+msgstr ""
+
+#: templates/common/dashboard.php:75
+msgid "Important notes"
+msgstr ""
+
+#: templates/common/code-insertion.php:9
+msgid "Insert Code"
+msgstr ""
+
+#: core/common/CustomCode.php:87 core/common/CustomCode.php:88
+msgid "Insert code"
+msgstr ""
+
+#: templates/common/dashboard.php:24
+msgid "Integrate AI to automate tasks"
+msgstr ""
+
+#: templates/common/dashboard.php:18
+msgid "Introduction to WP SysMaster"
+msgstr ""
+
+#: core/common/SMTP.php:247
+msgid "Invalid security token."
+msgstr ""
+
+#: templates/common/settings.php:24
+msgid "Kích hoạt chế độ Debug"
+msgstr ""
+
+#: templates/common/settings.php:34
+msgid "Kích hoạt Error Logging"
+msgstr ""
+
+#: templates/common/settings.php:49
+msgid "Kích hoạt REST API"
+msgstr ""
+
+#: templates/common/smtp.php:25
+msgid "Kích hoạt SMTP"
+msgstr ""
+
+#: templates/common/settings.php:78
+msgid "Kích hoạt thông báo qua email"
+msgstr ""
+
+#: core/ai/embeddings/EmbeddingHooks.php:114
+msgid "Last updated:"
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:150
+#: core/opcache/admin/views/opcache-dashboard.php:150
+msgid "Last Used"
+msgstr ""
+
+#: templates/common/smtp.php:102
+msgid "Leave empty if you do not want to change the password"
+msgstr ""
+
+#: templates/common/settings.php:94
+msgid "License"
+msgstr ""
+
+#: templates/common/settings.php:213
+msgid "License is valid!"
+msgstr ""
+
+#: templates/common/settings.php:97
+msgid "License Key"
+msgstr ""
+
+#: core/ai/settings/AISettingsPage.php:155
+msgid "Local Language Model Settings"
+msgstr ""
+
+#: templates/common/settings.php:113 templates/common/smtp.php:152
+msgid "Lưu thay đổi"
+msgstr ""
+
+#: templates/common/code-insertion.php:54
+msgid "Main WordPress loaded"
+msgstr ""
+
+#: templates/common/dashboard.php:28
+msgid "Manage file uploads"
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:57
+#: templates/opcache/opcache-dashboard.php:149
+#: core/opcache/admin/views/opcache-dashboard.php:57
+#: core/opcache/admin/views/opcache-dashboard.php:149
+msgid "Memory"
+msgstr ""
+
+#: templates/common/upload.php:63 templates/common/upload.php:84
+msgid "MIME type (e.g. application/pdf)"
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:92
+#: core/opcache/admin/views/opcache-dashboard.php:92
+msgid "Misses"
+msgstr ""
+
+#: core/ai/settings/AISettingsPage.php:110
+#: core/ai/settings/AISettingsPage.php:139
+msgid "Model"
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:46
+#: templates/opcache/opcache-dashboard.php:50
+#: core/opcache/admin/views/opcache-dashboard.php:46
+#: core/opcache/admin/views/opcache-dashboard.php:50
+msgid "No"
+msgstr ""
+
+#: core/ai/embeddings/EmbeddingHooks.php:109
+msgid "No embedding"
+msgstr ""
+
+#: core/opcache/admin/class-opcache-admin.php:34
+msgid "OPcache"
+msgstr ""
+
+#: core/opcache/admin/class-opcache-admin.php:73
+#: core/opcache/includes/class-opcache.php:65
+#: core/opcache/includes/class-opcache.php:96
+msgid "OPcache has been flushed successfully."
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:12
+#: core/opcache/includes/class-opcache.php:72
+#: core/opcache/includes/class-opcache.php:100
+#: core/opcache/admin/views/opcache-dashboard.php:12
+msgid "OPcache is not enabled on your server."
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:6
+#: core/opcache/admin/class-opcache-admin.php:33
+#: core/opcache/admin/views/opcache-dashboard.php:6
+msgid "OPcache Manager"
+msgstr ""
+
+#: core/ai/settings/AISettingsPage.php:93
+msgid "OpenAI Settings"
+msgstr ""
+
+#: templates/common/dashboard.php:26
+msgid "Optimize website performance"
+msgstr ""
+
+#: templates/common/dashboard.php:40
+msgid "Optimize website through the \"Optimization\" section"
+msgstr ""
+
+#. Author of the plugin
+msgid "Phan Xuân Chánh, khothemegiatot.com"
+msgstr ""
+
+#: templates/common/code-insertion.php:13
+#: templates/common/code-insertion.php:36
+msgid "PHP Code"
+msgstr ""
+
+#: templates/common/code-insertion.php:38
+msgid "PHP code will be executed. No need to use <?php ?> tags."
+msgstr ""
+
+#: templates/common/settings.php:195
+msgid "Please enter a license key."
+msgstr ""
+
+#: templates/common/smtp.php:219
+msgid "Please enter a test email address."
+msgstr ""
+
+#: core/common/SMTP.php:258
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: templates/common/upload.php:202
+msgid "Please fill in both extension and MIME type for each row."
+msgstr ""
+
+#: templates/common/code-insertion.php:43
+msgid "Plugin Hooks"
+msgstr ""
+
+#. Description of the plugin
+msgid "Plugin WordPress mạnh mẽ tích hợp AI và các tính năng nâng cao."
+msgstr ""
+
+#: core/ai/settings/AISettingsPage.php:197
+msgid "Post Types"
+msgstr ""
+
+#: core/ai/settings/AISettingsPage.php:182
+msgid "Provider"
+msgstr ""
+
+#: templates/common/dashboard.php:81
+msgid "Read the documentation carefully before using advanced features"
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:49
+#: core/opcache/admin/views/opcache-dashboard.php:49
+msgid "Restart Pending"
+msgstr ""
+
+#: templates/common/code-insertion.php:166 templates/common/upload.php:95
+msgid "Save Changes"
+msgstr ""
+
+#: templates/common/ai-settings.php:14
+msgid "Save Settings"
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:137
+#: core/opcache/admin/views/opcache-dashboard.php:137
+msgid "Search"
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:135
+#: core/opcache/admin/views/opcache-dashboard.php:135
+msgid "Search Files:"
+msgstr ""
+
+#: templates/common/ai-settings.php:23
+msgid "Select Provider"
+msgstr ""
+
+#: templates/common/smtp.php:144
+msgid "Send Test Email"
+msgstr ""
+
+#: templates/common/smtp.php:135
+msgid "Send To"
+msgstr ""
+
+#: core/common/SMTP.php:46 core/common/SMTP.php:47
+msgid "SMTP"
+msgstr ""
+
+#: templates/common/smtp.php:36
+msgid "SMTP Host"
+msgstr ""
+
+#: templates/common/smtp.php:95
+msgid "SMTP Password"
+msgstr ""
+
+#: templates/common/smtp.php:49
+msgid "SMTP Port"
+msgstr ""
+
+#: templates/common/smtp.php:32
+msgid "SMTP Server"
+msgstr ""
+
+#: templates/common/smtp.php:11
+msgid "SMTP Settings"
+msgstr ""
+
+#: templates/common/smtp.php:85
+msgid "SMTP Username"
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:80
+#: core/opcache/admin/views/opcache-dashboard.php:80
+msgid "Statistics"
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:31
+#: templates/opcache/opcache-dashboard.php:35
+#: core/opcache/admin/views/opcache-dashboard.php:31
+#: core/opcache/admin/views/opcache-dashboard.php:35
+msgid "Status"
+msgstr ""
+
+#: core/ai/embeddings/EmbeddingHooks.php:103
+msgid "Status:"
+msgstr ""
+
+#: templates/common/dashboard.php:67
+msgid "Support development"
+msgstr ""
+
+#: templates/common/ai-settings.php:30
+msgid "Test Connection"
+msgstr ""
+
+#: templates/common/ai-settings.php:18
+msgid "Test Connections"
+msgstr ""
+
+#: templates/common/smtp.php:132
+msgid "Test Email"
+msgstr ""
+
+#: core/common/SMTP.php:277
+msgid "Test email sent successfully!"
+msgstr ""
+
+#: templates/common/code-insertion.php:124
+msgid "The code will be inserted after the opening <body> tag."
+msgstr ""
+
+#: templates/common/code-insertion.php:139
+msgid "The code will be inserted before the closing </body> tag."
+msgstr ""
+
+#: templates/common/code-insertion.php:109
+msgid "The code will be inserted into the <head> tag of the website."
+msgstr ""
+
+#: core/common/SMTP.php:264
+#, php-format
+msgid "This is a test email from %s (%s)."
+msgstr ""
+
+#: templates/common/dashboard.php:53
+msgid ""
+"This plugin is developed by <strong>Phan Xuân Chánh, khothemegiatot</strong>."
+msgstr ""
+
+#: templates/common/settings.php:63
+msgid "Tạo API Key mới"
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:18
+#: core/opcache/admin/views/opcache-dashboard.php:18
+msgid "Unable to get OPcache statistics."
+msgstr ""
+
+#: core/ai/embeddings/EmbeddingHooks.php:120
+msgid "Update Embedding"
+msgstr ""
+
+#: templates/common/dashboard.php:80
+msgid "Update plugin regularly to receive new features and security patches"
+msgstr ""
+
+#: core/common/Upload.php:48
+msgid "Upload"
+msgstr ""
+
+#: templates/common/upload.php:19
+msgid "Upload Features"
+msgstr ""
+
+#: core/common/Upload.php:47 templates/common/upload.php:11
+msgid "Upload Settings"
+msgstr ""
+
+#: templates/common/dashboard.php:34
+msgid "Usage guide"
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:61
+#: core/opcache/admin/views/opcache-dashboard.php:61
+msgid "Used"
+msgstr ""
+
+#: templates/common/smtp.php:43
+msgid "VD: smtp.gmail.com"
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:69
+#: core/opcache/admin/views/opcache-dashboard.php:69
+msgid "Wasted"
+msgstr ""
+
+#. Name of the plugin
+#: core/init.php:12 core/init.php:13
+msgid "WP SysMaster"
+msgstr ""
+
+#: templates/common/dashboard.php:21
+msgid ""
+"WP SysMaster is a comprehensive plugin that helps you manage and optimize "
+"your WordPress website. It provides the following features:"
+msgstr ""
+
+#: templates/common/settings.php:106
+msgid "Xác thực License"
+msgstr ""
+
+#: templates/opcache/opcache-dashboard.php:46
+#: templates/opcache/opcache-dashboard.php:50
+#: core/opcache/admin/views/opcache-dashboard.php:46
+#: core/opcache/admin/views/opcache-dashboard.php:50
+msgid "Yes"
+msgstr ""
+
+#: core/common/SMTP.php:252 core/opcache/includes/class-opcache.php:57
+#: core/opcache/includes/class-opcache.php:89
+msgid "You do not have permission to perform this action."
+msgstr ""
+
+#: core/init.php:82 core/common/CustomCode.php:53 core/common/SMTP.php:139
+#: core/common/Upload.php:127
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""

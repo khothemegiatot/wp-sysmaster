@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WP SysMaster
  * Plugin URI: https://www.phanxuanchanh.com/wp-sysmaster
- * Description: Plugin WordPress mạnh mẽ tích hợp AI và các tính năng nâng cao.
+ * Description: A wordpress plugin to setup SMTP, OPcache, Custom code,...
  * Version: 1.0.0
  * Requires at least: 5.0
  * Requires PHP: 7.4

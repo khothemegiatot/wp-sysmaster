@@ -1,14 +1,25 @@
-# WP SysMaster - Plugin WordPress tích hợp AI
+# WP SysMaster - Plugin WordPress
 
-Plugin WordPress mạnh mẽ cho phép tùy chỉnh hệ thống và tích hợp các tính năng AI.
+Plugin WordPress mạnh mẽ cho phép tùy chỉnh hệ thống và tăng cường bảo mật.
 
 ## Tính năng
 
-- Tích hợp AI (OpenAI, Google Gemini, Local LM)
-- Quản lý Upload tùy chỉnh
+- Tổng quan Dashboard
+- Quản lý Upload
+  - Tùy chỉnh MIME types
+  - Xử lý tải lên file
 - Cấu hình SMTP
-- Tăng cường bảo mật
-- Hỗ trợ đa ngôn ngữ
+  - Cài đặt máy chủ email
+  - Chức năng kiểm tra email
+- Quản lý OPcache
+  - Giám sát trạng thái cache
+  - Tối ưu hóa cache
+- Chèn mã
+  - Thực thi mã PHP
+  - Scripts Header
+  - Scripts Body
+  - Scripts Footer
+  - CSS tùy chỉnh
 
 ## Cấu trúc thư mục
 
@@ -24,28 +35,13 @@ wp-sysmaster/
 │   └── images/            # Hình ảnh
 │
 ├── core/                   # Mã nguồn chính
-│   ├── admin/             # Quản lý giao diện admin
-│   │   ├── Menu.php       # Quản lý menu admin
-│   │   └── init.php       # Khởi tạo admin
+│   ├── common/            # Chức năng chung
+│   │   ├── Upload.php     # Quản lý upload
+│   │   ├── SMTP.php       # Cấu hình SMTP
+│   │   └── CustomCode.php # Chèn mã
 │   │
-│   ├── ai/                # Tích hợp AI
-│   │   ├── providers/     # Các nhà cung cấp AI
-│   │   │   ├── OpenAIProvider.php
-│   │   │   ├── GeminiProvider.php
-│   │   │   └── LocalLMProvider.php
-│   │   │
-│   │   ├── embeddings/    # Xử lý embeddings
-│   │   │   ├── EmbeddingAPI.php
-│   │   │   ├── EmbeddingManager.php
-│   │   │   └── EmbeddingHooks.php
-│   │   │
-│   │   ├── settings/      # Cài đặt AI
-│   │   │   ├── AISettingsPage.php
-│   │   │   └── init.php
-│   │   │
-│   │   ├── AIProviderInterface.php
-│   │   ├── AbstractAIProvider.php
-│   │   └── AIProviderFactory.php
+│   ├── opcache/           # Quản lý OPcache
+│   │   └── admin/         # Giao diện quản lý OPcache
 │   │
 │   └── includes/          # Các file hỗ trợ
 │       ├── helpers.php    # Hàm tiện ích
@@ -59,48 +55,32 @@ wp-sysmaster/
 │   ├── admin/            # Template cho admin
 │   └── public/           # Template cho frontend
 │
-├── vendor/               # Thư viện bên thứ 3 (Composer)
-├── wp-sysmaster.php     # File chính của plugin
-├── uninstall.php        # Xử lý gỡ cài đặt
+├── main.php              # File chính của plugin
+├── uninstall.php         # Xử lý gỡ cài đặt
 └── README.md            # Tài liệu
 ```
 
 ## Nguyên tắc tổ chức code
 
-1. **Namespace**
-   - Sử dụng namespace `WPSysMaster` cho toàn bộ plugin
-   - Các namespace con tương ứng với cấu trúc thư mục
-   - Ví dụ: `WPSysMaster\AI\Providers\OpenAIProvider`
+1. **Bảo mật**
+   - Kiểm tra hằng số ABSPATH
+   - Xử lý file an toàn
+   - Sử dụng các hàm bảo mật của WordPress
 
-2. **Autoloading**
-   - Sử dụng PSR-4 autoloading
-   - Đăng ký autoloader trong file chính của plugin
-   - Tất cả class phải tuân thủ quy tắc đặt tên PSR-4
-
-3. **Dependency Injection**
-   - Sử dụng constructor injection
-   - Tránh khởi tạo trực tiếp object trong class
-   - Sử dụng Factory pattern khi cần
-
-4. **Hooks & Filters**
-   - Đăng ký hooks trong file init.php của mỗi module
-   - Sử dụng method riêng cho mỗi hook callback
+2. **Hooks & Filters**
    - Prefix tất cả hook names với `wp_sysmaster_`
+   - Sử dụng hooks tiêu chuẩn của WordPress
+   - Triển khai các filter tùy chỉnh
 
-5. **Database**
-   - Prefix tất cả option names với `wp_sysmaster_`
-   - Sử dụng WordPress Options API cho cài đặt
-   - Tạo bảng riêng cho dữ liệu phức tạp
+3. **Database**
+   - Sử dụng WordPress Options API
+   - Triển khai cài đặt tùy chỉnh
+   - Tuân thủ cấu trúc dữ liệu WordPress
 
-6. **Templates**
+4. **Templates**
    - Tách biệt logic và presentation
    - Sử dụng template files trong thư mục templates/
    - Cho phép override template trong theme
-
-7. **Security**
-   - Kiểm tra nonce cho tất cả form submissions
-   - Escape output với các hàm esc_*()
-   - Kiểm tra capabilities trước khi thực hiện action
 
 ## Yêu cầu hệ thống
 
@@ -114,44 +94,53 @@ wp-sysmaster/
 2. Giải nén và upload thư mục `wp-sysmaster` vào `/wp-content/plugins/`
 3. Kích hoạt plugin trong menu Plugins của WordPress
 
-## Cấu hình
+## Tính năng
 
-### Cài đặt AI
+### Dashboard
 
-1. Truy cập **WP SysMaster > AI Settings**
-2. Cấu hình các nhà cung cấp AI:
-   - OpenAI API Key và Model
-   - Google Gemini API Key
-   - Local LM Endpoint
-3. Lưu cài đặt
+Dashboard chính cung cấp tổng quan về chức năng của plugin và trạng thái hệ thống.
 
-### Cài đặt Upload
+### Quản lý Upload
 
-1. Truy cập **WP SysMaster > Upload**
-2. Cấu hình MIME types tùy chỉnh
-3. Thiết lập quy tắc đặt tên file
-4. Lưu cài đặt
+Cấu hình MIME types tùy chỉnh và quản lý tải lên file với các tính năng bảo mật nâng cao.
+
+### Cấu hình SMTP
+
+Thiết lập và kiểm tra cài đặt máy chủ SMTP để đảm bảo gửi email đáng tin cậy.
+
+### Quản lý OPcache
+
+Giám sát và tối ưu hóa PHP OPcache để cải thiện hiệu suất.
+
+### Chèn mã
+
+Thêm mã tùy chỉnh vào các phần khác nhau của trang WordPress:
+- Thực thi mã PHP
+- Scripts Header
+- Scripts Body
+- Scripts Footer
+- CSS tùy chỉnh
 
 ## Phát triển
 
 ### Hooks có sẵn
 
 ```php
-// Thay đổi cài đặt mặc định
-add_filter('wp_sysmaster_default_options', 'your_function');
+// Tùy chỉnh cài đặt upload
+add_filter('wp_sysmaster_upload_settings', 'your_function');
 
-// Chạy trước khi lưu cài đặt
-add_action('wp_sysmaster_before_save_options', 'your_function');
+// Tùy chỉnh cấu hình SMTP
+add_filter('wp_sysmaster_smtp_settings', 'your_function');
 
-// Chạy sau khi lưu cài đặt
-add_action('wp_sysmaster_after_save_options', 'your_function');
+// Tùy chỉnh chèn mã
+add_filter('wp_sysmaster_code_settings', 'your_function');
 ```
 
 ## Hỗ trợ
 
 Nếu bạn cần hỗ trợ:
 
-1. Kiểm tra [tài liệu](https://www.phanxuanchanh.com/wp-sysmaster)
+1. Kiểm tra tài liệu
 2. Tạo issue trên GitHub
 3. Gửi email hỗ trợ
 

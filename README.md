@@ -1,14 +1,25 @@
-# WP SysMaster - WordPress Plugin with AI Integration
+# WP SysMaster - WordPress Plugin
 
-A powerful WordPress plugin that enhances your system with AI capabilities and additional features.
+A powerful WordPress plugin that enhances your system with custom functionality and security features.
 
 ## Features
 
-- AI Integration (OpenAI, Google Gemini, Local LM)
-- Custom Upload Management
+- Dashboard Overview
+- Upload Management
+  - Custom MIME types
+  - File upload handling
 - SMTP Configuration
-- Security Enhancements
-- Multi-language Support
+  - Email server settings
+  - Test email functionality
+- OPcache Management
+  - Cache status monitoring
+  - Cache optimization
+- Code Injection
+  - PHP Code execution
+  - Header Scripts
+  - Body Scripts
+  - Footer Scripts
+  - Custom CSS
 
 ## Directory Structure
 
@@ -24,28 +35,13 @@ wp-sysmaster/
 │   └── images/            # Images
 │
 ├── core/                   # Core source code
-│   ├── admin/             # Admin interface management
-│   │   ├── Menu.php       # Admin menu management
-│   │   └── init.php       # Admin initialization
+│   ├── common/            # Common functionality
+│   │   ├── Upload.php     # Upload management
+│   │   ├── SMTP.php       # SMTP configuration
+│   │   └── CustomCode.php # Code injection
 │   │
-│   ├── ai/                # AI Integration
-│   │   ├── providers/     # AI providers
-│   │   │   ├── OpenAIProvider.php
-│   │   │   ├── GeminiProvider.php
-│   │   │   └── LocalLMProvider.php
-│   │   │
-│   │   ├── embeddings/    # Embeddings handling
-│   │   │   ├── EmbeddingAPI.php
-│   │   │   ├── EmbeddingManager.php
-│   │   │   └── EmbeddingHooks.php
-│   │   │
-│   │   ├── settings/      # AI settings
-│   │   │   ├── AISettingsPage.php
-│   │   │   └── init.php
-│   │   │
-│   │   ├── AIProviderInterface.php
-│   │   ├── AbstractAIProvider.php
-│   │   └── AIProviderFactory.php
+│   ├── opcache/           # OPcache management
+│   │   └── admin/         # OPcache admin interface
 │   │
 │   └── includes/          # Helper files
 │       ├── helpers.php    # Utility functions
@@ -59,48 +55,32 @@ wp-sysmaster/
 │   ├── admin/            # Admin templates
 │   └── public/           # Frontend templates
 │
-├── vendor/               # Third-party libraries (Composer)
-├── wp-sysmaster.php     # Main plugin file
-├── uninstall.php        # Uninstall handler
+├── main.php              # Main plugin file
+├── uninstall.php         # Uninstall handler
 └── README.md            # Documentation
 ```
 
 ## Code Organization Principles
 
-1. **Namespace**
-   - Uses `WPSysMaster` namespace for the entire plugin
-   - Subnamespaces correspond to directory structure
-   - Example: `WPSysMaster\AI\Providers\OpenAIProvider`
+1. **Security**
+   - Checks ABSPATH constant
+   - Implements secure file handling
+   - Uses WordPress security functions
 
-2. **Autoloading**
-   - Uses PSR-4 autoloading
-   - Registers autoloader in main plugin file
-   - All classes follow PSR-4 naming convention
-
-3. **Dependency Injection**
-   - Uses constructor injection
-   - Avoids direct object instantiation in classes
-   - Uses Factory pattern when needed
-
-4. **Hooks & Filters**
-   - Registers hooks in each module's init.php
-   - Uses separate methods for hook callbacks
+2. **Hooks & Filters**
    - Prefixes all hook names with `wp_sysmaster_`
+   - Uses WordPress standard hooks
+   - Implements custom filters
 
-5. **Database**
-   - Prefixes all option names with `wp_sysmaster_`
-   - Uses WordPress Options API for settings
-   - Creates separate tables for complex data
+3. **Database**
+   - Uses WordPress Options API
+   - Implements custom settings
+   - Follows WordPress data structure
 
-6. **Templates**
+4. **Templates**
    - Separates logic and presentation
    - Uses template files in templates/ directory
    - Allows template override in theme
-
-7. **Security**
-   - Checks nonce for all form submissions
-   - Escapes output with esc_*() functions
-   - Verifies capabilities before actions
 
 ## System Requirements
 
@@ -114,44 +94,53 @@ wp-sysmaster/
 2. Extract and upload `wp-sysmaster` directory to `/wp-content/plugins/`
 3. Activate the plugin through WordPress Plugins menu
 
-## Configuration
+## Features
 
-### AI Settings
+### Dashboard
 
-1. Go to **WP SysMaster > AI Settings**
-2. Configure your AI providers:
-   - OpenAI API Key and Model
-   - Google Gemini API Key
-   - Local LM Endpoint
-3. Save settings
+The main dashboard provides an overview of the plugin's functionality and system status.
 
-### Upload Settings
+### Upload Management
 
-1. Go to **WP SysMaster > Upload**
-2. Configure custom MIME types
-3. Set file naming rules
-4. Save settings
+Configure custom MIME types and manage file uploads with enhanced security features.
+
+### SMTP Configuration
+
+Set up and test SMTP email server settings for reliable email delivery.
+
+### OPcache Management
+
+Monitor and optimize PHP OPcache for improved performance.
+
+### Code Injection
+
+Add custom code to different parts of your WordPress site:
+- PHP Code execution
+- Header Scripts
+- Body Scripts
+- Footer Scripts
+- Custom CSS
 
 ## Development
 
 ### Available Hooks
 
 ```php
-// Modify default settings
-add_filter('wp_sysmaster_default_options', 'your_function');
+// Modify upload settings
+add_filter('wp_sysmaster_upload_settings', 'your_function');
 
-// Run before saving settings
-add_action('wp_sysmaster_before_save_options', 'your_function');
+// Customize SMTP configuration
+add_filter('wp_sysmaster_smtp_settings', 'your_function');
 
-// Run after saving settings
-add_action('wp_sysmaster_after_save_options', 'your_function');
+// Modify code injection
+add_filter('wp_sysmaster_code_settings', 'your_function');
 ```
 
 ## Support
 
 If you need help:
 
-1. Check the [documentation](https://www.phanxuanchanh.com/wp-sysmaster)
+1. Check the documentation
 2. Create an issue on GitHub
 3. Send support email
 
